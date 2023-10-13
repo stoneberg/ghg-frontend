@@ -4,6 +4,10 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from "next/link";
 import { useMemo } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+
 export async function getStaticProps({locale}: GetStaticPropsContext) {
   return {
     props: {
@@ -26,51 +30,110 @@ const IndexPage: IDefaultLayoutPage = () => {
   const zeroImageM3 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im3_m.jpg')"}), []);
   const t = useTranslations('IndexPage');
 
+  const mainVbSliderSettings = {
+                slide: 'div',
+                infinite: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                speed: 1500,
+                arrows: false,
+                fade: true,
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                pauseOnHover: true,
+                vertical: false,
+                draggable: true,
+                accessibility: false,
+                waitForAnimate: false,
+                responsive: [
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            fade: false,
+                            speed: 800,
+                            autoplaySpeed: 3000,
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
+            };
+const mainZeroSliderSetting = {
+                slide: 'div',
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                speed: 500,
+                arrows: true,
+                dots: false,
+                autoplay: false,
+                autoplaySpeed: 1000,
+                pauseOnHover: true,
+                vertical: false,
+                prevArrow: <button type='button' className='slick-prev'>Previous</button>,
+                nextArrow: <button type='button' className='slick-next'>Next</button>,
+                draggable: true,
+                responsive: [
+                    {
+                        breakpoint: 1000,
+                        settings: {
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            };
+
   return (
     <>
       <div className="visual_wrap main-visual">
-          <div className="main-vbSlider">
-              <div className="slider-item">
-                  <div className="bg" style={bgImage1}>
-                      <div className="inner" style={bgImageInner1}>
-                          <div className="text">
-                              <div className="in">
-                                  <p className="tit">{t('STC_C_0001.value')}</p>
-                                  <p className="txt" dangerouslySetInnerHTML={{__html: t.raw('STC_C_0002.value')}}>
-                                  </p>
-                              </div>
-                              <div className="btnArea"><Link href={"/AboutUS"} className="">Explore Centero</Link></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div className="slider-item">
-                  <div className="bg"  style={bgImage2}>
-                      <div className="inner" style={bgImageInner2}>
-                          <div className="text">
-                              <div className="in">
-                                  <p className="tit">객관적이고 투명한<br />자발적 탄소 시장의 중심</p>
-                                  <p className="txt">탄소 발자국을 줄이기 위해 신뢰할 수 있는 객관적이고 투명한 정보를 제공합니다.</p>
-                              </div>
-                              <div className="btnArea"><Link href={"/GHGProgram/KCS"} className="btn">Learn More</Link></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div className="slider-item">
-                  <div className="bg" style={bgImage3}>
-                      <div className="inner" style={bgImageInner3}>
-                          <div className="text">
-                              <div className="in">
-                                  <p className="tit">사람과 지구를 위한<br />진정한 Net Zero 실현</p>
-                                  <p className="txt">기후 변화에 맞서 지속 가능한 세상을 위해 자발적 탄소 감축의 선순환을 지원합니다.</p>
-                              </div>
-                              <div className="btnArea"><Link href={"/GHGProgram/KCS"} className="btn">Explore Centero</Link></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+        <Slider className="main-vbSlider" {...mainVbSliderSettings}>
+            <div className="slider-item">
+                <div className="bg" style={bgImage1}>
+                    <div className="inner" style={bgImageInner1}>
+                        <div className="text">
+                            <div className="in">
+                                <p className="tit">{t('STC_C_0001.value')}</p>
+                                <p className="txt" dangerouslySetInnerHTML={{__html: t.raw('STC_C_0002.value')}}>
+                                </p>
+                            </div>
+                            <div className="btnArea"><Link href={"/AboutUS"} className="">Explore Centero</Link></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="slider-item">
+                <div className="bg"  style={bgImage2}>
+                    <div className="inner" style={bgImageInner2}>
+                        <div className="text">
+                            <div className="in">
+                                <p className="tit">객관적이고 투명한<br />자발적 탄소 시장의 중심</p>
+                                <p className="txt">탄소 발자국을 줄이기 위해 신뢰할 수 있는 객관적이고 투명한 정보를 제공합니다.</p>
+                            </div>
+                            <div className="btnArea"><Link href={"/GHGProgram/KCS"} className="btn">Learn More</Link></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="slider-item">
+                <div className="bg" style={bgImage3}>
+                    <div className="inner" style={bgImageInner3}>
+                        <div className="text">
+                            <div className="in">
+                                <p className="tit">사람과 지구를 위한<br />진정한 Net Zero 실현</p>
+                                <p className="txt">기후 변화에 맞서 지속 가능한 세상을 위해 자발적 탄소 감축의 선순환을 지원합니다.</p>
+                            </div>
+                            <div className="btnArea"><Link href={"/GHGProgram/KCS"} className="btn">Explore Centero</Link></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Slider>
       </div>
       <div className="section" id="main-section-about">
           <div className="inner">
@@ -131,8 +194,8 @@ const IndexPage: IDefaultLayoutPage = () => {
       <div className="section" id="main-section-prog">
           <div className="inner">
               <div className="main-card">
-                  <div className="thum"><Image src="/gentelella/build/images/centero-main-prog_thum.jpg" alt="" width={144}
-      height={144}/></div>
+                  <div className="thum"><Image src="/gentelella/build/images/centero-main-prog_thum.jpg" alt="" width={630}
+      height={400}/></div>
                   <div className="text">
                       <p className="tit">신뢰할 수 있는 GHG Program</p>
                       <p className="txt">
@@ -151,38 +214,38 @@ const IndexPage: IDefaultLayoutPage = () => {
       <div className="section" id="main-section-zero">
           <div className="inner">
               <p className="copy">NetZero와 관련된 다양한 정보와 최신 Trend를 지금 만나보세요</p>
-              <div className="main-zeroSlider">
-                  <a href="/AboutUs/Netzero?active=acco1'" className="slider-item">
-                      <div className="bg" style={zeroImageW1}>
-                          <div className="in" style={zeroImageM1}>Net Zero<br />왜 필요한가</div>
-                      </div>
-                  </a>
-                  <a href="/AboutUs/Netzero?active=acco2" className="slider-item">
-                      <div className="bg" style={zeroImageW2}>
-                          <div className="in" style={zeroImageM2}>한국의<br/>NetZero 현황</div>
-                      </div>
-                  </a>
-                  <a href="/AboutUs/Netzero?active=acco3" className="slider-item">
-                      <div className="bg" style={zeroImageW3}>
-                          <div className="in" style={zeroImageM3}>세계 각국의<br />NetZero 현황</div>
-                      </div>
-                  </a>
-                  <a href="/AboutUs/Netzero?active=acco1" className="slider-item">
-                      <div className="bg" style={zeroImageW1}>
-                          <div className="in" style={zeroImageM1}>Net Zero<br />왜 필요한가</div>
-                      </div>
-                  </a>
-                  <a href="/AboutUs/Netzero?active=acco2" className="slider-item">
-                      <div className="bg" style={zeroImageW2}>
-                          <div className="in" style={zeroImageM2}>한국의<br />NetZero 현황</div>
-                      </div>
-                  </a>
-                  <a href="/AboutUs/Netzero?active=acco3" className="slider-item">
-                      <div className="bg" style={zeroImageW3}>
-                          <div className="in" style={zeroImageM3}>세계 각국의<br />NetZero 현황</div>
-                      </div>
-                  </a>
-              </div>
+                <Slider className="main-zeroSlider" {...mainZeroSliderSetting}>
+                    <a href="/AboutUs/Netzero?active=acco1'" className="slider-item">
+                        <div className="bg" style={zeroImageW1}>
+                            <div className="in" style={zeroImageM1} dangerouslySetInnerHTML={{__html: t.raw('STC_C_0015.value')}}></div>
+                        </div>
+                    </a>
+                    <a href="/AboutUs/Netzero?active=acco1'" className="slider-item">
+                        <div className="bg" style={zeroImageW2}>
+                            <div className="in" style={zeroImageM2}  dangerouslySetInnerHTML={{__html: t.raw('STC_C_0016.value')}}></div>
+                        </div>
+                    </a>
+                    <a href="/AboutUs/Netzero?active=acco3" className="slider-item">
+                        <div className="bg" style={zeroImageW3}>
+                            <div className="in" style={zeroImageM3} dangerouslySetInnerHTML={{__html: t.raw('STC_C_0017.value')}}></div>
+                        </div>
+                    </a>
+                    <a href="/AboutUs/Netzero?active=acco1'" className="slider-item">
+                        <div className="bg" style={zeroImageW1}>
+                            <div className="in" style={zeroImageM1} dangerouslySetInnerHTML={{__html: t.raw('STC_C_0015.value')}}></div>
+                        </div>
+                    </a>
+                     <a href="/AboutUs/Netzero?active=acco1'" className="slider-item">
+                        <div className="bg" style={zeroImageW2}>
+                           <div className="in" style={zeroImageM2} dangerouslySetInnerHTML={{__html: t.raw('STC_C_0016.value')}}></div>
+                        </div>
+                    </a>
+                    <a href="/AboutUs/Netzero?active=acco3" className="slider-item">
+                        <div className="bg" style={zeroImageW3}>
+                           <div className="in" style={zeroImageM3} dangerouslySetInnerHTML={{__html: t.raw('STC_C_0017.value')}}></div>
+                        </div>
+                    </a>
+                </Slider> 
           </div>
       </div>
     </>
