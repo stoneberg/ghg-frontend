@@ -1,0 +1,25 @@
+{
+  "IndexPage": {
+        "title":"helloWorld",
+    "STC_C_0001": {
+      "value": "Journey to Global Net Zero",
+      "comment": "글로벌 Net Zero를 향한 여정"
+    }
+   ,"STC_C_0002": {
+      "value": "Join us on our journey to create a better tomorrow&lt;br/&gt;by reducing our carbon emissions and protecting nature.",
+      "comment": "탄소 배출량을 줄이고 자연을 보호하여&lt;br/&gt;더 나은 내일을 만들어가는 여정에 함께 합니다."
+    }
+   ,"STC_C_0003": {
+      "value": "Better Net Zero, Better Life",
+      "comment": "Better Net Zero, Better Life"
+    }
+   ,"STC_C_0004": {
+      "value": "Centero provides services that everyone can trust to ensure the most efficient and optimal carbon reduction. From support for carbon reduction certification process to credit issuance and transaction brokerage, we implement Net Zero for people and the planet.",
+      "comment": "가장 효율적이고 최적의 탄소 감축이 가능하도록 Centero는 모두가 신뢰할 수 있는 서비스를 제공합니다.탄소 감축 인증 프로세스 지원과 Credit 발급 및 거래 중개 지원까지, 사람과 지구를 위한 Net Zero를 실현합니다."
+    }
+    ,"STC_C_0005": {
+      "value": "&lt;strong&gt;Efficient&lt;/strong&gt; Net Zero",
+      "comment": "&lt;strong&gt;Efficient&lt;/strong&gt; Net Zero"
+    }
+  }
+}
