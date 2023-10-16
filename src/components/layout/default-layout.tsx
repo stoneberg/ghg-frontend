@@ -75,7 +75,7 @@ const DefaultLayout = ({ Page, ...props }: IDefaultLayoutProps) => {
         ) : (
           <></>
         )}
-        <section className="px-5 pb-5 sm:px-10">
+        <section >
           <Page {...props} />
         </section>
       </div>

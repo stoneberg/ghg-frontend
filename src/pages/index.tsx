@@ -16,18 +16,18 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
   };
 }
 const IndexPage: IDefaultLayoutPage = () => {
-  const bgImage1 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im1.jpg')"}), []);
-  const bgImageInner1 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im1_m.jpg')"}), []);
-  const bgImage2 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im2.jpg')"}), []);
-  const bgImageInner2 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im2_m.jpg')"}), []);
-  const bgImage3 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im3.jpg')"}), []);
-  const bgImageInner3 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-vb_im3_m.jpg')"}), []);
-  const zeroImageW1 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im1_w.jpg')"}), []);
-  const zeroImageM1 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im1_m.jpg')"}), []);
-  const zeroImageW2 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im2_w.jpg')"}), []);
-  const zeroImageM2 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im2_m.jpg')"}), []);
-  const zeroImageW3 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im3_w.jpg')"}), []);
-  const zeroImageM3 = useMemo(() => ({backgroundImage: "url('/gentelella/build/images/centero-main-zero_im3_m.jpg')"}), []);
+  const bgImage1 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im1.jpg')"}), []);
+  const bgImageInner1 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im1_m.jpg')"}), []);
+  const bgImage2 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im2.jpg')"}), []);
+  const bgImageInner2 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im2_m.jpg')"}), []);
+  const bgImage3 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im3.jpg')"}), []);
+  const bgImageInner3 = useMemo(() => ({backgroundImage: "url('/images/centero-main-vb_im3_m.jpg')"}), []);
+  const zeroImageW1 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im1_w.jpg')"}), []);
+  const zeroImageM1 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im1_m.jpg')"}), []);
+  const zeroImageW2 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im2_w.jpg')"}), []);
+  const zeroImageM2 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im2_m.jpg')"}), []);
+  const zeroImageW3 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im3_w.jpg')"}), []);
+  const zeroImageM3 = useMemo(() => ({backgroundImage: "url('/images/centero-main-zero_im3_m.jpg')"}), []);
   const t = useTranslations('IndexPage');
 
   const mainVbSliderSettings = {
@@ -138,7 +138,7 @@ const mainZeroSliderSetting = {
       <div className="section" id="main-section-about">
           <div className="inner">
               <div className="main-card">
-                  <div className="thum"><Image src="/gentelella/build/images/centero-main-about_thum.jpg" alt=""  width={500} height={500}/></div>
+                  <div className="thum"><Image src="/images/centero-main-about_thum.jpg" alt=""  width={635} height={395}/></div>
                   <div className="text">
                       <p className="tit">Better NetZero, Better Life</p>
                       <p className="txt">
@@ -194,7 +194,7 @@ const mainZeroSliderSetting = {
       <div className="section" id="main-section-prog">
           <div className="inner">
               <div className="main-card">
-                  <div className="thum"><Image src="/gentelella/build/images/centero-main-prog_thum.jpg" alt="" width={630}
+                  <div className="thum"><Image src="/images/centero-main-prog_thum.jpg" alt="" width={630}
       height={400}/></div>
                   <div className="text">
                       <p className="tit">신뢰할 수 있는 GHG Program</p>

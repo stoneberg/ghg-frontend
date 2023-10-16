@@ -25,6 +25,8 @@ const BoardFileUpload = <T extends object>({
     } = useForm<Inputs>()
   const t = useTranslations('Common');
 
+
+
   return (
     <>
         <div className="fileupload_wrap">
@@ -40,7 +42,7 @@ const BoardFileUpload = <T extends object>({
                         <span id="btnFUAdd" className="btn rms-btn-default rms-btn-size">
                             <i className="fa-solid fa-plus"></i>
                             <span>Add File</span>
-                            <input style={{"position": "absolute", "top": "0px", "right": "0px", "margin": "0", "opacity": "0", "direction": "ltr", "cursor": "pointer!important", "width": "103px", "height": "24px"}} type="file" id="files" name="files[]" multiple={false} />
+                            <input style={{"position": "absolute", "top": "0px", "right": "0px", "margin": "0", "opacity": "0", "direction": "ltr", "cursor": "pointer!important", "width": "103px", "height": "24px"}} type="file" id="files" name="files[]" multiple={true} />
                         </span>
                         <button id="btnFUCancel" type="button" className="btn rms-btn-type-e rms-btn-size"><i className="fa-solid fa-ban"></i> Cancel Upload</button>
                         <button id="btnFUDelete" type="button" className="btn rms-btn-type-e rms-btn-size"><i className="fa-solid fa-xmark"></i> Remove</button>
