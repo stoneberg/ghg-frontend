@@ -21,6 +21,7 @@ Centero 2.0 Nextjs Frontend
 	* Slick-carousel: react slick css
 
 # 디렉토리 구조
+```
 
 ┌─ src
 │  ├─ client       # API 호출 코드
@@ -45,6 +46,7 @@ Centero 2.0 Nextjs Frontend
 │  │   ├─ skcs    # GHG1, GHG2 양식 파일
 │  ├─ images   # 기본 이미지
 ├─ messages # 다국어 메시지
+```
 
 
 
