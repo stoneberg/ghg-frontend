@@ -1,0 +1,395 @@
+/* ***** Layout ***** */
+.logo_kcs {
+  display: inline-block;
+  width: 100%;
+  height: 35px;
+  background-image: url(/images/centero-kcci_logo.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: left center;
+}
+/* Help */
+.con_body.resources {
+  background-color: #f4f4f4;
+  padding-bottom: 40px;
+}
+.con_body.resources {
+  flex: 1;
+}
+.con_body.resources > .contents_body {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.con_body.resources > .contents_body > .contents_header {
+  display: block;
+}
+.con_body.resources > .contents_body > .contents_header > .contents_title {
+  font-size: 4.8rem;
+  color: #000;
+  font-weight: 600;
+  margin: 24px 0 40px;
+  text-align: center;
+  float: none;
+}
+
+/* ***** Contents ***** */
+/* common */
+.kcs * {
+  word-break: keep-all;
+}
+[lang="en"] .kcs * {
+  word-wrap: break-word;
+}
+.centero.kcs.sub .visual_wrap .tit {
+  text-shadow: 1px 1px 12px rgb(88, 88, 88);
+}
+
+.centero.kcs.sub .section {
+  padding: 80px 0;
+}
+
+.centero_kcci_logo {
+  height: 32px;
+}
+.centero_kcs_logo {
+  height: 32px;
+  margin-left: 8px;
+}
+
+.centero.kcs.sub .visual_wrap.bg_about {
+  background-image: url(/images/centero-sub-vb_kcs_about.jpg);
+}
+.centero.kcs.sub .visual_wrap.bg_program {
+  background-image: url(/images/centero-sub-vb_kcs_program.jpg);
+}
+.centero.kcs.sub .visual_wrap.bg_newsroom {
+  background-image: url(/images/centero-sub-vb_kcs_news.jpg);
+  height: 180px;
+  flex-shrink: 0;
+}
+
+/* KCS-overview */
+.kcs-overview-centerhead {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0 60px;
+}
+.kcs-overview-centerhead .text {
+  margin-bottom: 15px;
+  text-align: center;
+}
+.kcs-overview-centerhead .tit {
+  font-size: 3.6rem;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+.kcs-overview-centerhead .txt {
+  font-size: 2rem;
+  color: #696f76;
+  margin-top: 20px;
+}
+.kcs-overview-centerhead .small {
+  text-align: right;
+  font-size: 1.4rem;
+  margin-top: 32px;
+}
+.kcs-overview-centerhead .small .name {
+  font-size: 2rem;
+  color: #000;
+  font-style: italic;
+}
+
+/* KCS-contact */
+.kcs-contact-img img {
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+.kcs-contact-img img:nth-child(2) {
+  margin-top: 40px;
+}
+
+.kcs-contact-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  margin-top: 80px;
+  text-align: left;
+}
+.kcs-contact-wrap > div {
+  align-self: stretch;
+}
+.kcs-contact-wrap > div.logo {
+  padding-right: 48px;
+}
+.kcs-contact-wrap > div.contact-info dl {
+  margin: 24px 0;
+}
+.kcs-contact-wrap > div.contact-info dt,
+.kcs-contact-wrap > div.contact-info dd {
+  display: flex;
+  justify-content: flex-start;
+}
+.kcs-contact-wrap > div.contact-info dt > *,
+.kcs-contact-wrap > div.contact-info dd > * {
+  align-self: center;
+}
+.kcs-contact-wrap > div.contact-info dt {
+  margin-bottom: 8px;
+}
+.kcs-contact-wrap > div.contact-info dd {
+  margin-bottom: 48px;
+}
+.kcs-contact-call {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.kcs-contact-wrap > div.contact-info .icon {
+  border-radius: 4px;
+  background-color: rgba(67, 168, 199, 0.2);
+  color: #019ebf;
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+  font-size: 2.4rem;
+  margin: 0 12px 0 0;
+  text-align: center;
+}
+.kcs-contact-wrap h4 {
+  font-size: 2.4rem;
+  color: #333;
+  font-weight: 600;
+  line-height: normal;
+}
+.kcs-contact-wrap > div.contact-info .kcs-contact-call {
+  margin: 0 -24px;
+}
+.kcs-contact-wrap > div.contact-info .kcs-contact-call > div {
+  margin: 0 24px;
+}
+
+.kcs-contact-eng-message {
+  display: none;
+}
+[lang="en"] .kcs-contact-eng-message {
+  display: block;
+  margin-bottom: 48px;
+}
+
+.how-to-premises {
+  margin: 80px 0;
+}
+.how-to-premises h4 {
+  font-size: 3.6rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 12px;
+}
+.how-to-premises .text {
+  font-size: 2rem;
+}
+
+.how-to-premises h5 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+  margin-top: 40px;
+}
+.how-to-premises ul {
+  margin: 0 24px;
+}
+.how-to-premises li {
+  margin-bottom: 24px;
+}
+
+/* KCS in Brief */
+.kcs .ghgSlider .slider-item {
+  height: auto;
+}
+.kcs .ghgSlider .centero-btn {
+  margin: 16px auto;
+}
+
+.kcs_program .sect-text {
+  font-size: 2rem;
+}
+
+.kcs .prog2-carbon-download {
+  margin-bottom: 12px;
+}
+.kcs .prog2-carbon-download + h5.sect-tit3 {
+  margin-top: 72px;
+}
+
+/* KCS-Help */
+.kcs-help-tit {
+  font-size: 2.4rem;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.kcs-help-text {
+  font-size: 2rem;
+  color: #636566;
+  line-height: 1.8;
+  word-break: keep-all;
+  margin-bottom: 24px;
+}
+.con_box.help {
+  padding: 24px 32px;
+}
+.con_box.help .form-group {
+  margin-bottom: 36px;
+}
+.con_box.help .form-label {
+  margin-bottom: 4px;
+}
+.con_box.help span.required {
+  color: #da284a;
+  background-image: none;
+  display: inline-block;
+  margin-left: 4px;
+}
+.con_box.help .form-control {
+  min-height: 34px;
+  border-radius: 4px;
+}
+.con_box.help .btn-wrap-help {
+  justify-content: center;
+  text-align: center;
+  margin: 24px 0;
+}
+.con_box.help .btn-wrap-help .btn {
+  padding: 12px 24px;
+  min-width: 120px;
+  font-size: 1.8rem;
+}
+.con_box.help .form-check {
+  margin: 12px 0;
+}
+.con_box.help .form-check-input {
+  margin-top: 3px;
+  width: 20px;
+  height: 20px;
+}
+
+/* 타블렛 & 모바일 */
+@media (max-width: 1279px) {
+  .centero.kcs.sub .section {
+    padding: 40px 0;
+  }
+
+  /* KCS-contact */
+  .kcs-contact-wrap > div.logo img {
+    max-height: 80px;
+  }
+  .kcs-contact-call {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .kcs-contact-wrap .info.kcs-contact-call > div {
+    margin: 16px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* ***** GHG PROGRAM ***** */
+  .kcs-overview-centerhead .txt,
+  .kcs-overview-centerhead .small .name {
+    font-size: 1.6rem;
+  }
+  .kcs-overview-centerhead .small {
+    font-size: 1.3rem;
+  }
+  .kcs-overview-centerhead .tit {
+    font-size: 2.4rem;
+  }
+
+  .kcs .prog2-intro-contactInfo dt {
+    font-weight: 400;
+  }
+
+  .kcs_program .sect-text {
+    font-size: 1.6rem;
+  }
+
+  .kcs .prog2-carbon-download + h5.sect-tit3 {
+    margin-top: 48px;
+  }
+
+  .kcs .newsroom > .contents_body > .contents_header > .contents_title {
+    font-size: 2.4rem;
+  }
+  .kcs .newsroom > .contents_body > .contents_header > .contents_title {
+    margin: 12px 0 24px;
+  }
+
+  /* KCS-contact */
+  .kcs-contact-wrap {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .kcs-contact-wrap > div.logo {
+    padding-right: 0;
+  }
+  .kcs-contact-wrap > div.logo img {
+    max-height: 80px;
+  }
+  .kcs-contact-wrap h4 {
+    font-size: 1.8rem;
+  }
+  .kcs-contact-wrap > div.contact-info .icon {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    font-size: 1.4rem;
+    margin: 0 12px 0 0;
+  }
+  .kcs-contact-wrap > div.contact-info .kcs-contact-call {
+    margin: 0;
+    text-align: left;
+  }
+  .kcs-contact-wrap > div.contact-info .kcs-contact-call > div {
+    margin: 4px 0;
+  }
+
+  .how-to-premises {
+    margin: 40px 0;
+  }
+  .how-to-premises h4 {
+    font-size: 3rem;
+    word-break: break-word;
+  }
+  .how-to-premises h5 {
+    word-break: break-word;
+  }
+
+  /* KCS-Help */
+  .con_body.resources > .contents_body > .contents_header > .contents_title {
+    font-size: 2.8rem;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .kcs .prog2-carbon-download {
+    flex-direction: column;
+    border-top: 1px solid #ced4da;
+  }
+  .kcs .prog2-carbon-download > li {
+    border-top: 0;
+    border-left: 1px solid #ced4da;
+  }
+}
+@media screen and (max-width: 525px) {
+  .kcs-contact-wrap {
+    margin-top: 20px;
+  }
+  .kcs-contact-wrap > div.logo img {
+    max-height: 48px;
+  }
+}

@@ -1,0 +1,193 @@
+﻿@charset "utf-8";
+/*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);*/
+/* CSS Document 
+
+body,td,th {font-size: 12px;}
+body {margin:0; *word-break:break-all;-ms-word-break:break-all;	text-align:center;}
+#wrap{width:450px; 	margin-left:auto;	margin-right:auto;}
+#header, #container, #btm, #btnArea, #footer{width:450px; margin:0 auto;}
+#header{background:url(images/bgMsgTop.gif) no-repeat; height:50px; color:#fff; padding:10px 0 0 20px; font-weight:bold; text-align:left; font-size:14px;}
+#container{background:url(images/bgMsgBody.gif) repeat-y;}
+#container:after{content:"";display:block;clear:both; min-height:100%;}
+#con_left{float:left; width:110px; text-align:right; padding-top:10px; vertical-align:middle;}
+#con_right{float:right; width:280px; text-align:left; padding-top:30px; vertical-align:middle; padding-right:30px;}
+#btm{padding-bottom:5px; background:#f3f3f3;}
+#btnArea{text-align:center;}
+#btnArea img{padding:0 5px; cursor:pointer;}
+#detail{clear:both; width:380px; padding:20px 40px;  text-align:center;}
+#detailTxt{border-top:1px #cccccc dashed;text-align:left; padding:20px 10px 0 10px;}
+#footer{background:#f3f3f3;}
+.closeBtn{text-align:right; float:right; width:50x; padding-right:25px; margin-top:-3px!important; cursor:pointer;}*/
+
+
+/****************************************** New Message *****************************************************************/
+
+/* body,td,th {font-family: 'Poppins Regular', 'Nanum Barun Gothic', '나눔 바른 고딕', 'Malgun Gothic','맑은고딕','돋움',Dotum,Helvetica,sans-serif !important;	color:#666;}
+body {margin:0; background:#fff; *word-break:break-all;-ms-word-break:break-all;	text-align:left;}
+.imgLink{cursor:pointer;} */
+#msgWrap {height:100%; margin:0; padding:0; }
+#header, #content{margin:0 auto;}
+#header{border-top:3px solid #019ebf ; height: 37px;	position: relative;	z-index: 1;}
+#title{padding:11px 0 11px 34px; white-space:nowrap; color:black; /*background:url(Images/admin/layer_left.gif) 0px 0px no-repeat;*/}
+#close {position:absolute; top:10px; right:10px; cursor:pointer;  }
+
+#content{ clear:both; width:420px;  background:#fff;}
+.contentError{ clear:both; padding-right:10px;  background:#fff;}
+#content:after{content:"";display:block;clear:both;}
+#ico{width:130px; height:80px; text-align:center;  background:url(images/imgIcoLine.gif) right no-repeat; float:left;}
+#txt{float:left;  width:420px;height:140px; overflow:auto; }
+#txt div{/*height: inherit; display: table-cell;*/ vertical-align: top; padding:5px 0px;}
+*:first-child+html #txt {float:left; width:420px;overflow:auto;display: inline; zoom: 1; height: auto; min-height: 1%;}
+*:first-child+html #txt div{height: 1%;}
+*:first-child+html #txt.fixievalign {height: 37px;	position: relative;	z-index: 1; font-weight:100;  font-size:18px; font-weight:normal; font-family: 'Poppins Regular', 'Nanum Barun Gothic', '나눔 바른 고딕', 'Malgun Gothic','맑은고딕','돋움',Dotum,Helvetica,sans-serif !important; color:#000;}
+
+.fixievalign {height: 37px;	position: relative;	z-index: 1; font-weight:100;  font-size:18px; font-weight:bold; font-family: 'Poppins Regular', 'Nanum Barun Gothic', '나눔 바른 고딕', 'Malgun Gothic','맑은고딕','돋움',Dotum,Helvetica,sans-serif !important; color:#000; padding-top:30px; display:block;}
+#button{clear:both; border-top:1px solid #ccc; padding:15px 0; text-align:right;}
+*:first-child+html #button{clear:both; background:url(images/bgDotLine.gif) top repeat-x; padding:7px 0; text-align:right;}
+#button img{padding-left:5px;}
+#detail{padding:10px; line-height:125%; height:95px; overflow:auto;}
+#detailError{background:#f0f0f0; padding:10px; line-height:125%; height:95px; overflow:auto;}
+#con_right{font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;	font-size:14px;	color:#666; clear:both;}
+
+.messagePopup-body i{color:#999;}
+.btn:visted, .btn:active{border-color:transparent!important;}
+
+.messagePopup-dialog {
+  width: 450px;
+}
+.messagePopup-content {
+  box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+  font-family: 'Poppins Regular', 'Nanum Barun Gothic', '나눔 바른 고딕', 'Malgun Gothic','맑은고딕','돋움',Dotum,Helvetica,sans-serif !important;
+  border-radius: 2px;
+  border: none;
+  background: #ffffff;
+}
+.messagePopup-content .messagePopup-header {
+ /* background: #fcb630;*/
+  padding-top: 10px;
+  padding-right: 24px;
+  padding-bottom: 10px;
+  padding-left: 24px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.messagePopup-content .messagePopup-header h3 {
+  margin:0;
+  font-weight: 500;
+  font-size: 22px;
+}
+.messagePopup-content .messagePopup-header i {
+  margin-right: 5px;
+  vertical-align: middle;
+  padding-bottom: 3px;
+}
+.messagePopup-content .messagePopup-header .messagePopup-btn {
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 36px;
+  height: 36px;
+}
+.messagePopup-content .messagePopup-header .messagePopup-btn button {
+  background: transparent;
+  padding: 10px;
+  width: 36px;
+  height: 36px;
+	margin:0!important;
+}
+.messagePopup-content .messagePopup-header .messagePopup-btn button i {position: absolute; left: 12px; top: 9px; color: #fff; font-size: 18px;}
+.messagePopup-content .messagePopup-header .messagePopup-btn button:hover, 
+.messagePopup-content .messagePopup-header .messagePopup-btn button:active {background: rgba(0,0,0,0.08); width: 36px; height: 36px; color:#fff;  border:1px solid rgba(255,255,255,0.4)!important;}
+
+
+.messagePopup-content .messagePopup-body {
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 16px;
+  padding-left: 20px;
+  background: #ffffff;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.messagePopup-content .messagePopup-body .message-con-text{display: flex; justify-content: space-between; align-items: flex-start; width: 100%;}
+.messagePopup-content .messagePopup-body .message-con-text > div{align-self: top;}
+.messagePopup-content .messagePopup-body .message-con-text > div:first-child{width: 48px; padding-left: 12px;}
+.messagePopup-content .messagePopup-body .message-con-text > div:last-child{width: calc(100% - 60px);}
+/* .messagePopup-content .messagePopup-body table {
+  margin-bottom: 15px;
+  margin-top: -10px;
+  margin-left: 0px;
+  width: 420px;
+} */
+.messagePopup-content .messagePopup-body i {
+  vertical-align: middle;
+  font-size: 28px!important;
+  /*position: absolute;
+  left: 25px;
+  top: 0px;*/
+}
+.messagePopup-content .messagePopup-body .message-view {
+  width: 100%;
+  height: 80px;
+  overflow: auto;
+  margin-left: 0px;
+}
+.messagePopup-content .messagePopup-body .message-text {
+  display: table-cell;
+  height: 80px;
+  vertical-align: top;
+}
+.messagePopup-content .messagePopup-body .message-error-box {
+  background: #f5f5f5;
+  padding: 10px;
+  height: 80px;
+  overflow-y: auto;
+}
+.messagePopup-content .messagePopup-body .message-error {
+  color: #f06548;
+}
+.messagePopup-content .messagePopup-body .message-confirm {
+  color: #0ab39c;
+}
+.messagePopup-content .messagePopup-body .message-info {
+  color: #299cdb;
+}
+.messagePopup-content .messagePopup-body .message-warning {
+  color: #6d6e71 ;
+}
+.messagePopup-content .messagePopup-footer {
+  border-top: 1px solid #D2D2D2;
+  text-align: right;
+  padding: 10px 0px 0px;
+}
+.messagePopup-content .messagePopup-footer button {margin: 0; padding: 8px 25px!important; width: auto;}
+.messagePopup-content .messagePopup-footer button:hover{color: #fff;}
+.messagePopup-content .messagePopup-footer button.pull-left {padding-left: 5px; padding-right: 5px; position: relative; left: -5px;}
+.messagePopup-content .messagePopup-footer button + button {margin-left: 5px; /*margin-bottom: 16px!important;*/}
+.messagePopup-content .messagePopup-body + .messagePopup-footer {padding-top: 0;}
+.messagePopup-backdrop {background: rgba(0, 0, 0, 0.3);}
+.message-error-bg {
+  background: #f06548 !important;
+  color: #ffffff;
+}
+.message-info-bg {
+  background: #299cdb !important;
+  color: #ffffff;
+}
+.message-warning-bg {
+  background: #f7b84b !important;
+  color: #ffffff;
+}
+.message-confirm-bg {
+  background: #0ab39c !important;
+  color: #ffffff;
+}
+.btn.message-confirm-bg:hover{ background: #099885 !important;}
+
+.message-confirm-bg2 {
+  background: #5e5f5f !important;
+  color: #ffffff;
+}
+.btn.message-confirm-bg2:hover{ background: #333 !important;}

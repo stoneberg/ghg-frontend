@@ -1,0 +1,18 @@
+#popover-target label {
+    margin: 0 5px;
+    display: block;
+}
+
+#popover-target input {
+    margin-right: 5px;
+}
+
+#popover-target .disabled {
+    color: #ddd;
+}
+
+.removeFirstCol span :nth-child(2) {
+    display: none !important;
+    /*opacity:0;*/
+    visibility: hidden;
+}

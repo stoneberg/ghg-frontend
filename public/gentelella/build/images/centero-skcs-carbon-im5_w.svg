@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="구분도_1_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" width="1110px" height="340px" viewBox="0 0 1110 340" enable-background="new 0 0 1110 340" xml:space="preserve">
+<g id="Line_1_">
+	<g id="Shape_5">
+		<g>
+			<rect x="702" y="41.999" fill="#C8C8C8" width="1" height="246"/>
+		</g>
+	</g>
+	<g id="Shape_5_copy">
+		<g>
+			<rect x="262" y="113.999" fill="#C8C8C8" width="1" height="62"/>
+		</g>
+	</g>
+	<g id="Shape_5_copy_5">
+		<g>
+			<rect x="107" y="237.999" fill="#C8C8C8" width="1" height="55"/>
+		</g>
+	</g>
+	<g id="arrow_copy_3">
+		<g>
+			<polygon fill="#C8C8C8" points="103.001,286 107.5,293.998 111.999,286 			"/>
+		</g>
+	</g>
+	<g id="Shape_5_copy_4">
+		<g>
+			<rect x="403" y="237.999" fill="#C8C8C8" width="1" height="55"/>
+		</g>
+	</g>
+	<g id="arrow_copy_2">
+		<g>
+			<polygon fill="#C8C8C8" points="399.001,286 403.5,293.998 407.999,286 			"/>
+		</g>
+	</g>
+	<g id="arrow">
+		<g>
+			<polygon fill="#C8C8C8" points="698.001,286 702.5,293.998 706.999,286 			"/>
+		</g>
+	</g>
+	<g id="Shape_5_copy_3">
+		<g>
+			<rect x="993" y="140.999" fill="#C8C8C8" width="1" height="152"/>
+		</g>
+	</g>
+	<g id="arrow_copy">
+		<g>
+			<polygon fill="#C8C8C8" points="989.001,286 993.5,293.998 997.999,286 			"/>
+		</g>
+	</g>
+	<polyline fill="none" stroke="#C8C8C8" stroke-miterlimit="10" points="262,98.667 262,67.999 993,67.999 993,98.667 	"/>
+	<polyline fill="none" stroke="#C8C8C8" stroke-miterlimit="10" points="106,196.999 106,174.999 404,174.999 404,196.999 	"/>
+</g>
+<g id="SKVER_1_">
+	<g id="Rounded_Rectangle_10">
+		<g>
+			<path fill="#F7966D" d="M804,3.999H602c-2.209,0-4,1.791-4,4V38c0,2.209,1.791,3.999,4,3.999h202c2.209,0,4-1.79,4-3.999V7.999
+				C808,5.79,806.209,3.999,804,3.999z"/>
+		</g>
+	</g>
+	<g id="SKVER_2_">
+		<text transform="matrix(1 0 0 1 674.4697 29)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">SKVER</text>
+	</g>
+</g>
+<g id="방법론__x201C_충족_x201D__1_">
+	<g id="Rounded_Rectangle_10_1_">
+		<g>
+			<path fill="#959595" d="M361,101.999H159c-2.209,0-4,1.791-4,4v30c0,2.21,1.791,4,4,4h202c2.209,0,4-1.79,4-4v-30
+				C365,103.79,363.209,101.999,361,101.999z"/>
+		</g>
+	</g>
+	<g id="방법론__x201C_충족_x201D__2_">
+		<text transform="matrix(1 0 0 1 208.8159 127)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">방법론 “충족”</text>
+	</g>
+</g>
+<g id="방법론__x201C_일부충족_x201D__1_">
+	<g id="Rounded_Rectangle_10_2_">
+		<g>
+			<path fill="#959595" d="M804,101.999H602c-2.209,0-4,1.791-4,4v30c0,2.21,1.791,4,4,4h202c2.209,0,4-1.79,4-4v-30
+				C808,103.79,806.209,101.999,804,101.999z"/>
+		</g>
+	</g>
+	<g id="방법론__x201C_일부충족_x201D__2_">
+		<text transform="matrix(1 0 0 1 635.7598 127)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">방법론 “일부충족”</text>
+	</g>
+</g>
+<g id="방법론__x201C_미충족_x201D__1_">
+	<g id="Rounded_Rectangle_10_3_">
+		<g>
+			<path fill="#959595" d="M1098,101.999H896c-2.209,0-4,1.791-4,4v30c0,2.21,1.791,4,4,4h202c2.209,0,4-1.79,4-4v-30
+				C1102,103.79,1100.209,101.999,1098,101.999z"/>
+		</g>
+	</g>
+	<g id="방법론__x201C_미충족_x201D__2_">
+		<text transform="matrix(1 0 0 1 937.7881 127)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">방법론 “미충족”</text>
+	</g>
+</g>
+<g id="Data_정확_1_">
+	<g id="Rounded_Rectangle_10_4_">
+		<g>
+			<path fill="#019EBF" d="M213,199.999H11c-2.209,0-4,1.791-4,4.001v30c0,2.208,1.791,3.999,4,3.999h202c2.209,0,4-1.791,4-3.999
+				v-30C217,201.79,215.209,199.999,213,199.999z"/>
+		</g>
+	</g>
+	<g id="Data_정확_2_">
+		<text transform="matrix(1 0 0 1 73.146 225)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">Data 정확</text>
+	</g>
+</g>
+<g id="Data_부족_x28_보수적_x29__1_">
+	<g id="Rounded_Rectangle_10_5_">
+		<g>
+			<path fill="#019EBF" d="M509,199.999H307c-2.209,0-4,1.791-4,4.001v30c0,2.208,1.791,3.999,4,3.999h202c2.209,0,4-1.791,4-3.999
+				v-30C513,201.79,511.209,199.999,509,199.999z"/>
+		</g>
+	</g>
+	<g id="Data_부족_x28_보수적_x29__2_">
+		<text transform="matrix(1 0 0 1 337.0342 225)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">Data 부족(보수적)</text>
+	</g>
+</g>
+<g id="대안평가_가능_1_">
+	<g id="Rounded_Rectangle_10_6_">
+		<g>
+			<path fill="#019EBF" d="M804,199.999H602c-2.209,0-4,1.791-4,4.001v30c0,2.208,1.791,3.999,4,3.999h202c2.209,0,4-1.791,4-3.999
+				v-30C808,201.79,806.209,199.999,804,199.999z"/>
+		</g>
+	</g>
+	<g id="대안평가_가능_2_">
+		<text transform="matrix(1 0 0 1 651.8164 225)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">대안평가 가능</text>
+	</g>
+</g>
+<g id="대안평가_불가능_1_">
+	<g id="Rounded_Rectangle_10_7_">
+		<g>
+			<path fill="#019EBF" d="M1100,199.999H898c-2.209,0-4,1.791-4,4.001v30c0,2.208,1.791,3.999,4,3.999h202c2.209,0,4-1.791,4-3.999
+				v-30C1104,201.79,1102.209,199.999,1100,199.999z"/>
+		</g>
+	</g>
+	<g id="대안평가_불가능_2_">
+		<text transform="matrix(1 0 0 1 939.7881 225)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">대안평가 불가능</text>
+	</g>
+</g>
+<g id="Level_A_1_">
+	<g id="Rounded_Rectangle_10_8_">
+		<g>
+			<path fill="#09B39C" d="M213,297.999H11c-2.209,0-4,1.791-4,4v30c0,2.209,1.791,4,4,4h202c2.209,0,4-1.791,4-4v-30
+				C217,299.79,215.209,297.999,213,297.999z"/>
+		</g>
+	</g>
+	<g id="Level_A_2_">
+		<text transform="matrix(1 0 0 1 81.3994 323)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">Level A</text>
+	</g>
+</g>
+<g id="Level_B_1_">
+	<g id="Rounded_Rectangle_10_9_">
+		<g>
+			<path fill="#09B39C" d="M509,297.999H307c-2.209,0-4,1.791-4,4v30c0,2.209,1.791,4,4,4h202c2.209,0,4-1.791,4-4v-30
+				C513,299.79,511.209,297.999,509,297.999z"/>
+		</g>
+	</g>
+	<g id="Level_B_2_">
+		<text transform="matrix(1 0 0 1 377.5522 323)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">Level B</text>
+	</g>
+</g>
+<g id="Level_C_1_">
+	<g id="Rounded_Rectangle_10_10_">
+		<g>
+			<path fill="#09B39C" d="M804,297.999H602c-2.209,0-4,1.791-4,4v30c0,2.209,1.791,4,4,4h202c2.209,0,4-1.791,4-4v-30
+				C808,299.79,806.209,297.999,804,297.999z"/>
+		</g>
+	</g>
+	<g id="Level_C_2_">
+		<text transform="matrix(1 0 0 1 672.4443 323)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">Level C</text>
+	</g>
+</g>
+<g id="평가탈락_1_">
+	<g id="Rounded_Rectangle_10_11_">
+		<g>
+			<path fill="#09B39C" d="M1100,297.999H898c-2.209,0-4,1.791-4,4v30c0,2.209,1.791,4,4,4h202c2.209,0,4-1.791,4-4v-30
+				C1104,299.79,1102.209,297.999,1100,297.999z"/>
+		</g>
+	</g>
+	<g id="평가탈락_2_">
+		<text transform="matrix(1 0 0 1 965.8877 323)" fill="#FFFFFF" font-family="'NanumBarunGothic'" font-size="18">평가탈락</text>
+	</g>
+</g>
+</svg>

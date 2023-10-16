@@ -1,0 +1,173 @@
+﻿<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Error</title>
+    
+    <!-- Bootstrap -->
+    <link href="../../gentelella/vendors/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../gentelella/vendors/font-awesome/css/all.css" rel="stylesheet">
+    <!-- Font Poppins -->
+    <link href="../../gentelella/vendors/font-poppins/font_poppins.css" rel="stylesheet">
+    <!-- Font Nanumbarungothic -->
+    <link href="../../gentelella/vendors/font-barungothic/font_barungothic.css" rel="stylesheet">   
+    <!-- Centero Style -->
+    <link href="../../gentelella/build/css/centero.css" rel="stylesheet">
+    <link href="message.css" rel="stylesheet" type="text/css" />
+
+    <!--   HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="/StaticContent/js/html5.js"></script>
+        <script src="/StaticContent/js/respond.min.js"></script>
+    <![endif]-->
+  <!-- #region script -->
+  <script src="../../StaticContent/gentelella/build/js/jquery-3.6.0.min.js"></script>
+  <script src="../../StaticContent/gentelella/vendors/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="../../StaticContent/gentelella/build/js/centero.js"></script>
+  <!-- #endregion script -->
+
+    <script src="../../../StaticContent/Common/Mosti.Message.js"></script>
+    <script language="javascript" type="text/jscript">
+
+        // 알림메시지 다국어 처리
+        // htm 파일에는 resource로 다국어 데이터를 가져올 수 없다.
+        // 따라서 쿠키에 저장된 다국어 정보로 직접 다국어를 삽입한다.
+        $(document).ready(function () {
+            if (getCookie("__GT_CULTURE__") == "ko-KR") {
+                $('#txtTitle').text("오류");
+                $('#btnOK').text("확인");
+            }
+            else {
+                $('#txtTitle').text("Error");
+                $('#btnOK').text("Confirm");
+            }
+        });
+        function LoadMessage() {
+            document.getElementById("con_right").innerHTML = parent.document.getElementById("_MOSTI_MESSAGE_").innerHtml;
+            document.getElementById("detailTxt").innerHTML = parent.document.getElementById("_MOSTI_MESSAGE_DETAIL_").innerHtml;
+
+            document.getElementById("detailTxt").innerHTML.replace(/\n/g, "<br />");
+            document.getElementById("con_right").innerHTML.replace(/\n/g, "<br />");
+        }
+
+        function BackDetail() {
+
+
+            bDetail = !bDetail;
+            document.all.txt.style.display = "";
+            document.all.button.style.display = "";
+            document.all.content.style.width = "";
+            document.all.txtError.style.display = "none";
+
+            document.all.contendError.style.paddingLeft = "";
+            document.all.contendError.style.paddingRight = "";
+        }
+        function ErrorResult(dialogResult) {
+            /// <summary>
+            /// Error 메세지의 결과 값을 만든 후 요청한 Callback함수를 호출 합니다.<br />
+            /// Callback함수는 반드시 하나의 파리미터를 가지고 있어야 합니다.<br />
+            /// OK 버튼을 클릭하면 dialogResult 값은 Ok값을 반환 하며 X 버튼을 클릭하면 dialogResult는 Cancel 값을 갖습니다.
+            /// Ex) function ErrorCallback(dialogResult) { ..... }
+            /// </summary>
+            try {
+                GtDivMsg.DisableMessage();
+
+                var fn = parent.document.getElementById("_MOSTI_MESSAGE_CALLBACK_");
+                if (fn != null && fn != undefined) {
+                    if (fn.innerText.length > 0) {
+                        //Callback함수 결과값 정의
+                        var callbackStr = GtDivMsg.format(fn.innerText, dialogResult);
+                        eval('parent.' + callbackStr);
+                    }
+                }
+                GtDivMsg.RemoveMessage();
+            }
+            catch (e) { }
+        }
+
+        var bDetail = false;
+        function ViewDetail() {
+            bDetail = !bDetail;
+            document.all.txt.style.display = "none";
+            document.all.button.style.display = "none";
+            document.all.content.style.width = 70 + "%";
+            document.all.txtError.style.display = "";
+            document.all.contendError.style.paddingLeft = 10 + "px";
+            document.all.contendError.style.paddingRight = 10 + "px";
+
+            //if (bDetail)
+            //{
+            //    document.all.detail.style.display = "";
+            //    document.all.con_right.style.display = "none";
+            //	GtDivMsg.ResizeMessage(parseInt(document.documentElement.scrollWidth), 263, false);
+            //}
+            //else
+            //{
+            //    document.all.detail.style.display = "none";
+            //    document.all.con_right.style.display = "";
+            //	GtDivMsg.ResizeMessage(   parseInt(document.documentElement.scrollWidth), 263, false);
+            //}
+        }
+
+        //=======================================================
+        //	Drag & Drop
+        //=======================================================
+        var dragStart = false;
+        var posX, posY;
+
+        document.onmousemove = function () {
+            try {
+                if (event.button == 1 && dragStart) {
+                    GtDivMsg.MoveMessage(event.clientX - posX, event.clientY - posY);
+                    return false;
+                }
+            }
+            catch (e) { }
+        }
+
+        document.onmousedown = function () {
+            try {
+                var srcId = event.srcElement.id;
+                if (srcId == "header") {
+                    dragStart = true;
+                    posX = event.clientX;
+                    posY = event.clientY;
+                }
+            }
+            catch (e) { }
+        }
+
+        document.onmouseup = function () { dragStart = false; };
+    </script>
+</head>
+
+<body onload="LoadMessage();" style="min-width: 0px; padding-top: 0px;">
+  <div className="messagePopup-content" style="box-shadow:none;">
+      <div className="messagePopup-header message-error-bg">
+          <h3 className="messagePopup-title" id="txtTitle"></h3>
+          <div className="messagePopup-btn">
+              <button type="button" className="btn btn-default" onclick="ErrorResult('Cancel');"><i className="fa-solid fa-xmark"></i></button>
+          </div>
+      </div>
+      <div className="messagePopup-body">
+          <!--message area-->
+          <div className="message-con-text">
+            <div><i className="fa fa-times-circle"></i></div>
+            <div>
+              <div className="message-view">
+                <div id="con_right" className="message-text" mostiLineBreak="">
+                    <!--message here message here message -->
+                </div>
+            </div>
+            </div>
+          </div>
+          <!--//message area-->  
+          <!--button-->
+          <div className="messagePopup-footer">
+              <button id="btnOK" className="btn btn-default message-error-bg" onclick="ErrorResult('Ok');">Confirm</button>
+          </div>
+          <!--//button-->
+      </div>
+  </div>
+</body>
+</html>
