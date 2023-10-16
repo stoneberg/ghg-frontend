@@ -29,4 +29,13 @@
       "value": "<strong>Credible</strong> Net Zero"
     } 
   }
+  ,"Common": {
+    "CMM_T_0035": {
+      "value": "취소"
+    }
+    ,"CMM_T_0031": { "value":"저장"}
+    ,"CMM_T_0002": { "value" :"제목" }
+    ,"CMM_T_0003": { "value" : "작성자" }
+    ,"CMM_T_0049": { "value" : "첨부파일" }
+  }
 }

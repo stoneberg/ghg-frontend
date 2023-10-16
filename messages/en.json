@@ -22,4 +22,11 @@
       "comment": "&lt;strong&gt;Efficient&lt;/strong&gt; Net Zero"
     }
   }
+  ,"Common": {
+    "CMM_T_0035": { "value" :"Cancel" }
+    ,"CMM_T_0031": { "value" :"Save" }
+    ,"CMM_T_0002": { "value" : "Title" }
+    ,"CMM_T_0003": { "value" : "Writer" }
+    ,"CMM_T_0049": { "value" : "Attachment Files" }
+  }
 }
