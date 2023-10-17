@@ -1,14 +1,14 @@
 import { NextIntlClientProvider } from "next-intl";
 import messages from '../../../../messages/ko.json';
-import BoardFileUpload from "./board-fileupload";
+import BoardList from "./default-board-list-type1";
 
 const getDefaultComponent = () => {
-  return  (<NextIntlClientProvider locale="ko" messages={messages}><BoardFileUpload className="test"/></NextIntlClientProvider>);
+  return  (<NextIntlClientProvider locale="ko" messages={messages}><BoardList/></NextIntlClientProvider>);
 }
 
 export default {
   component: getDefaultComponent,
-  title: 'Board/FileUpload',
+  title: 'Board/List1',
   tags: ['autodocs'],
 };
 

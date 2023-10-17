@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl';
 import React, { PropsWithChildren } from "react";
 import { useForm } from "react-hook-form";
 import BoardFileupload from "./board-fileupload";
-
 interface IDefaultTableProps<T> extends TableProps<T> {
   countLabel?: number;
 }

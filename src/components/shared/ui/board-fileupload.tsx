@@ -25,8 +25,6 @@ const BoardFileUpload = <T extends object>({
     } = useForm<Inputs>()
   const t = useTranslations('Common');
 
-
-
   return (
     <>
         <div className="fileupload_wrap">
