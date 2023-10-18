@@ -11,60 +11,60 @@ import React, { createContext, PropsWithChildren, useContext, useEffect } from "
 interface IAuthProviderProps {}
 
 interface IAuthContext {
-  initialized: boolean;
-  session: Session;
+    initialized: boolean;
+    session: Session;
 }
 
 export const AuthContext = createContext<IAuthContext | null>(null);
 
 export function useAuth() {
-  const result = useContext(AuthContext);
-  if (!result?.initialized) {
-    throw new Error("Auth context must be used within a AuthProvider!");
-  }
-  return result;
+    const result = useContext(AuthContext);
+    if (!result?.initialized) {
+        throw new Error("Auth context must be used within a AuthProvider!");
+    }
+    return result;
 }
 
-const publicPageList = ["/login","/",""];
+const publicPageList = ["/login", "/", ""];
 
 const isPublicPage = (pathname: string) => {
-  return publicPageList.includes(pathname);
+    // return publicPageList.includes(pathname);
+    return true;
 };
 
 const AuthProvider = ({ children }: PropsWithChildren<IAuthProviderProps>) => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  const loading = status === "loading";
+    const router = useRouter();
+    const { data: session, status } = useSession();
+    const loading = status === "loading";
 
-  useEffect(() => {
-    if (loading) {
-      return;
+    useEffect(() => {
+        if (loading) {
+            return;
+        }
+        console.log("aaa");
+        if (session && isPublicPage(router.pathname)) {
+            console.log("1");
+            router.push("/");
+        } else if (!session && !isPublicPage(router.pathname)) {
+            console.log("2");
+            router.push("/login");
+        }
+    }, [loading, router, session]);
+
+    if (loading || (session && isPublicPage(router.pathname))) {
+        return <Spinner />;
     }
-    console.log("aaa");
-    if (session && isPublicPage(router.pathname)) {
-      console.log("1");
-      router.push("/");
-      
-    } else if (!session && !isPublicPage(router.pathname)) {
-       console.log("2");
-      router.push("/login");
+
+    if (isPublicPage(router.pathname)) {
+        console.log("3");
+        return <>{children}</>;
     }
-  }, [loading, router, session]);
 
-  if (loading || (session && isPublicPage(router.pathname))) {
-    return <Spinner />;
-  }
+    if (!session?.user) {
+        return <Spinner />;
+    }
 
-  if (isPublicPage(router.pathname)) {
-      console.log("3");
-    return <>{children}</>;
-  }
-
-  if (!session?.user) {
-    return <Spinner />;
-  }
-
-  return <AuthContext.Provider value={{ initialized: true, session }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ initialized: true, session }}>{children}</AuthContext.Provider>;
 };
 
 export default React.memo(AuthProvider);

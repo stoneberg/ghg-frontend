@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "start": "next start --dir src",
+    "start": "next start",
     "lint": "next lint --dir src",
     "format": "next lint --fix --dir src",
     "storybook": "storybook dev -p 6006",
@@ -16,6 +16,9 @@
   "dependencies": {
     "@ant-design/cssinjs": "^1.16.1",
     "@uiw/react-codemirror": "^4.21.9",
+    "ag-grid-community": "^30.2.0",
+    "ag-grid-enterprise": "^30.2.0",
+    "ag-grid-react": "^30.2.0",
     "antd": "^5.7.3",
     "dayjs": "^1.11.9",
     "framer-motion": "^10.15.0",
@@ -34,7 +37,8 @@
     "react-quill": "^2.0.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
-    "swr": "^2.2.0"
+    "swr": "^2.2.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.6",
