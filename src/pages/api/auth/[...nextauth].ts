@@ -47,6 +47,11 @@ export default NextAuth({
       }
       return token;
     },
+    async redirect({ url, baseUrl }) {
+      console.log("redirect!!!!!!1", baseUrl);
+      console.log("redirect!!!!!!2", url);
+      return process.env.DEFAULT_URL;
+    },
     session({ session, token }) {
        console.log("vsession ");
       session.user = { ...session.user, id: token.id as string, login: token.login as string };

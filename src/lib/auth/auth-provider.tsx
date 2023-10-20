@@ -1,8 +1,7 @@
-import Spinner from "@/components/shared/spinner";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { createContext, PropsWithChildren, useContext, useEffect } from "react";
+import React, { createContext, PropsWithChildren, useContext } from "react";
 
 interface IAuthProviderProps {}
 
@@ -32,31 +31,8 @@ const AuthProvider = ({ children }: PropsWithChildren<IAuthProviderProps>) => {
     const { data: session, status } = useSession();
     const loading = status === "loading";
 
-    useEffect(() => {
-        if (loading) {
-            return;
-        }
-        console.log("aaa");
-        if (session && isPublicPage(router.pathname)) {
-            console.log("1");
-            router.push("/");
-        } else if (!session && !isPublicPage(router.pathname)) {
-            console.log("2");
-            router.push("/login");
-        }
-    }, [loading, router, session]);
-
-    if (loading || (session && isPublicPage(router.pathname))) {
-        return <Spinner />;
-    }
-
     if (isPublicPage(router.pathname)) {
-        console.log("3");
-        return <>{children}</>;
-    }
-
-    if (!session?.user) {
-        return <Spinner />;
+       return <>{children}</>; 
     }
 
     return <AuthContext.Provider value={{ initialized: true, session }}>{children}</AuthContext.Provider>;
