@@ -1,7 +1,3 @@
-/**
- * 백오피스 특성상 기본적으로 인증 필요
- * 인증된 사용자 정보를 얻거나 로그인 페이지로 이동
- */
 import Spinner from "@/components/shared/spinner";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
@@ -26,7 +22,6 @@ export function useAuth() {
 }
 
 const publicPageList = ["/login", "/", ""];
-
 const isPublicPage = (pathname: string) => {
     // return publicPageList.includes(pathname);
     return true;

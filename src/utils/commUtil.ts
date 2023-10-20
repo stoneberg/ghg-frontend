@@ -1,3 +1,5 @@
+import { IUploadFileResult } from "@/types/upload-file";
+
 export const arrayToTree = (arr, parent, addLeaf = true) => {
   return arr
     .filter(
@@ -13,3 +15,21 @@ export const arrayToTree = (arr, parent, addLeaf = true) => {
       children: arrayToTree(arr, child.CODE_CD, addLeaf),
     }));
 };
+
+export const getUploadFileResult = (subFolder: string, fileSeq: number, orgName: string, chgName: string, fileType: string, fileSize: number): IUploadFileResult => {
+    orgName = orgName;
+    chgName = chgName;
+    return {
+        url: "/Files/Find/" + subFolder + "/" + orgName + "/" + chgName + "/" + fileType, 
+        deleteUrl: "/Files/Delete/" + subFolder + "/" + fileSeq + "/" + orgName + "/" + chgName + "/" + fileType + "/" + fileSize,
+        size: fileSize, 
+        type: fileType, 
+        name: orgName
+    } as IUploadFileResult;
+}
+
+export const getPagination = () => {
+  
+}
+
+

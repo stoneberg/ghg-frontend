@@ -2,3 +2,15 @@
 }
 .board-pagination {
 }
+.board-a {
+    color: #019ebf;
+    text-decoration: underline !important;
+}
+.ag-header-cell-label {
+    justify-content: center;
+}
+.ag-header-cell.text-center {
+    .ag-header-cell-label {
+        justify-content: center;
+    }
+}

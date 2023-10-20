@@ -22,7 +22,11 @@ const DefaultHeader = () => {
                   <button className="dropdown-item" type="button" onClick={() => console.log('ko-KR')}>KOR</button>
               </div>
           </div>
-           <button type="button" className="btn btn_login" onClick={ () => console.log("sdf")}><i className="fa-solid fa-user"></i> Login</button>
+          <button type="button" className="btn btn_login">
+            <Link href="/login" style={{color:"white"}}>
+              <i className="fa-solid fa-user"></i> Login
+            </Link>
+           </button>
         </div>
         <div className="btn_mb_menu_area">
           <button type="button" className="btn_mb_menu"><i className="fa-solid fa-bars"></i></button>

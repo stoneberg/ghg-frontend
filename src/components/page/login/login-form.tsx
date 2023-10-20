@@ -71,7 +71,6 @@ const LoginForm = () => {
         form={form}
         layout="vertical"
         initialValues={{ username: "admin", password: "admin" }}
-        onFinish={handleFinish}
       >
         <div className="mb-3">
           {router?.query.error === "CredentialsSignin" ? (

@@ -253,5 +253,6 @@ const mainZeroSliderSetting = {
 };
 
 IndexPage.getLayout = getDefaultLayout;
+IndexPage.isHideNav = true;
 
 export default IndexPage;

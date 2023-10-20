@@ -25,9 +25,12 @@
   ,"Common": {
       "CMM_T_0001": { "value": "No." }
      ,"CMM_T_0007": { "value" : "Create Date" }
+     ,"CMM_T_0030": { "value" :"Delete" }
       ,"CMM_T_0035": { "value" :"Cancel" }
       ,"CMM_T_0031": { "value" :"Save" }
+      ,"CMM_T_0038": { "value" :"Registration" }
       ,"CMM_T_0002": { "value" : "Title" }
+      ,"CMM_T_0024": { "value" : "List" }
       ,"CMM_T_0003": { "value" : "Writer" }
       ,"CMM_T_0049": { "value" : "Attachment Files" }
       ,"CMM_T_0025": { "value" : "Search" }

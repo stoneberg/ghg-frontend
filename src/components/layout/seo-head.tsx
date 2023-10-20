@@ -15,8 +15,8 @@ const SeoHead = ({ title, description }: ISeoHeadProps) => {
     
       <title>{title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE}</title>
       <meta name="description" content={description ?? DEFAULT_DESCRIPTION} />
-      <meta http-equiv="Content-Type" content="text/html" charSet="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta httpEquiv="Content-Type" content="text/html" charSet="utf-8" />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     </Head>
   );
 };

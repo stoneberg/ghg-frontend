@@ -1,93 +1,74 @@
-import { IBoard, IBoardListProps } from "@/types/board";
-import { Table } from 'antd';
-import type { SizeType } from 'antd/es/config-provider/SizeContext';
-import type { TableProps } from 'antd/es/table';
-import type { ExpandableConfig, TableRowSelection } from 'antd/es/table/interface';
-import React, { PropsWithChildren, useState } from "react";
+import { IBoard } from "@/client/board";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+import 'ag-grid-enterprise';
+import { GridApi } from "ag-grid-enterprise";
+import { AgGridReact } from "ag-grid-react";
+import Link from "next/link";
+import { PropsWithChildren, useEffect, useMemo, useRef } from "react";
 import style from "./board-list.module.css";
-import BoardTitle from './board-title';
-import BoardTotal from "./board-total";
 
-type TablePaginationPosition =
-  | 'topLeft'
-  | 'topCenter'
-  | 'topRight'
-  | 'bottomLeft'
-  | 'bottomCenter'
-  | 'bottomRight';
+interface IBoardListProps {
+  columnHeaders: object[],
+  className?: string;
+  data?: IBoard[];
+}
 
+export const TitleCellRenderer = (props) => { 
 
-const BoardList = <T extends object>({ className, columnHeaders, hasData, data, onSearch, pagination  }: PropsWithChildren<IBoardListProps>) => {
-  const defaultTitle = () => (<BoardTitle onSearch={onSearch} />);
-  const [bordered ] = useState(true);
-  const [loading ] = useState(false);
-  const [size ] = useState<SizeType>('small');
-  const [expandable ] = useState<ExpandableConfig<IBoard> | undefined>(
-    undefined,
-  );
-  const [showTitle ] = useState(true);
-  const [showHeader ] = useState(true);
-  const [rowSelection ] = useState<TableRowSelection<IBoardListProps> | undefined>(undefined);
-  const [tableLayout ] = useState();
-  const [top ]    = useState<TablePaginationPosition | 'none'>('none');
-  const [bottom ] = useState<TablePaginationPosition>('bottomRight');
-  const [ellipsis ] = useState(true);
-  const [yScroll ] = useState(false);
-  const [xScroll ] = useState<string>();
-  const scroll: { x?: number | string; y?: number | string } = {};
-  if (yScroll) {
-    scroll.y = 240;
-  }
-  if (xScroll) {
-    scroll.x = '100vw';
-  }
+  const parameters = props.detailUrlParameters(props);
+  return (
+  <>
+    <Link href={{
+            pathname: props.detailUrl,
+            query: parameters,
+          }} scroll={false} className={style["board-a"]}>{props.value}
+    </Link> &nbsp;
+    <span className="badge board_badge new" style={{"display" : `${props.data.newYn == 'Y' ? "":"none"}`}}>N</span>
+    <span className="badge board_badge attachments" style={{"display" : `${props.data.attachFileCnt > 0 ? "":"none"}`}}>
+      <i className="fa-solid fa-paperclip"></i>
+    </span>
+    <span className="comment_num">{props.data.commentCnt}</span>
+  </>
+)}
 
-  const tableColumns = columnHeaders.map((item) => ({ ...item, ellipsis }));
-  tableColumns[0].fixed = true;
-  tableColumns[tableColumns.length - 1].fixed = 'right';
+export const BoardList = ({ className, columnHeaders, data }: PropsWithChildren<IBoardListProps>) => {
+  const gridStyle     = useMemo(() => ({ height: '100%', width: '100%' }), []);
+  const defaultColDef = useMemo(() => {
+    return {
+      editable: false,
+      sortable: false,
+      minWidth: 100,
+      filter: false,
+      resizable: false,
+      suppressSizeToFit: true,
+      cellStyle:  {textAlign: 'center'},
+      initialPinned: false, 
+      pinned: null,
+    };
+  }, []);
+  const gridRef = useRef();
+  useEffect(() => {
+      if (gridRef && gridRef.current ) {
+        const { api } = gridRef.current;
+        const gridApi = api as GridApi; 
+      }
+  })
 
-  const tableProps: TableProps<IBoard> = {
-    bordered,
-    loading,
-    size,
-    expandable,
-    title: showTitle ? defaultTitle : undefined,
-    showHeader,
-    footer: undefined,
-    scroll,
-    tableLayout,
-  };
-  
   return  (
     <>
-       <section className="con_box no_border">
-        <Table
-          {...tableProps}
-          pagination={
-            { 
-               ...pagination
-              ,position: [top as TablePaginationPosition, bottom] 
-              ,defaultPageSize: 10
-              ,showSizeChanger: false
-              ,showPrevNextJumpers:true
-              ,hideOnSinglePage: false
-              ,showQuickJumper: false
-              ,prevIcon: ""
-              ,nextIcon: ""
-              ,className: "board-pagination"
-              ,showTotal(total, range) {
-                return <BoardTotal total={total} range={range} />
-              }
-            }
-          }
-          columns={tableColumns}
-          dataSource={hasData ? data : []}
-          scroll={scroll}
-          className={className? style[className] : undefined}
-        />
-      </section>
+        <div className="ag-theme-alpine " style={gridStyle}>
+          <AgGridReact 
+            ref={gridRef}
+            rowData={data} 
+            columnDefs={columnHeaders} 
+            defaultColDef={defaultColDef}
+            domLayout='autoHeight' 
+            pagination={false}
+            suppressContextMenu={true}
+            suppressPaginationPanel={true}
+            ></AgGridReact>
+        </div>
     </>
   );
 };
-
-export default React.memo(BoardList) as typeof BoardList;

@@ -14,6 +14,7 @@ import Head from "next/head";
 import { SWRConfig } from "swr";
 import DefaultFooter from "../components/layout/default-footer";
 import DefaultHeader from "../components/layout/default-header";
+
 const pretendard = localFont({
   src: "../fonts/PretendardVariable.woff2",
 
