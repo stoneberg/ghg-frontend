@@ -2,12 +2,13 @@ import { DownOutlined } from "@ant-design/icons";
 import { Tree, TreeProps } from "antd";
 import { Key } from "antd/es/table/interface";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-// import { request } from "src/utils/axios";
+import { fetchApi } from "src/client/base";
+import { arrayToTree } from "src/utils/commUtil";
 
 const findExpandedKey = (arr: any[], keyList: Key[]) => {
     arr.forEach((node) => {
         if (node.children && node.children.length > 0 && node.children.find((child) => child.children.length > 0)) {
-            keyList.push(node.CODE_CD);
+            keyList.push(node.codeCd);
             findExpandedKey(node.children, keyList);
         }
     });
@@ -38,27 +39,30 @@ const LeftTree = forwardRef<any, any>((props, ref) => {
     };
 
     const renderTreeData = () => {
-        // request("get", "/sample/treeList", null).then((result) => {
-        //   if (result.code != "S0000001" || result.dataSet.length < 1) {
-        //     messageApi.open({
-        //       type: "error",
-        //       content: "조회된 정보가 없습니다.",
-        //     });
-        //     return;
-        //   }
-        //   let treeData = arrayToTree(result.dataSet, "root");
-        //   let keyList = [];
-        //   findExpandedKey(treeData, keyList);
-        //   setExpandedKeys(keyList);
-        //   setTreeData(treeData);
-        // });
+        fetchApi
+            .get("api/ghg/v1/admin/codes/trees")
+            .json()
+            .then((result: any) => {
+                if (result.code != "OK" || result.data.length < 1) {
+                    messageApi.open({
+                        type: "error",
+                        content: "조회된 정보가 없습니다.",
+                    });
+                    return;
+                }
+                let treeData = arrayToTree(result.data, null);
+                let keyList = ["root"];
+                findExpandedKey(treeData, keyList);
+                setExpandedKeys(keyList);
+                setTreeData(treeData);
+            });
     };
 
     const onTreeNodeSelect: TreeProps["onSelect"] = async (keys, info) => {
         setSelectedKeys(keys);
         refSelectedNode.current = info.selected ? info.node : undefined;
         await refGrid.current.updateColDef(info.node);
-        refGrid.current.getCodelist({ P_CODE_CD: keys });
+        refGrid.current.getCodelist({ pcodeCd: keys });
     };
 
     return (

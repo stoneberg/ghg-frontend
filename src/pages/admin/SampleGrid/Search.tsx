@@ -29,8 +29,8 @@ const Search = forwardRef<any, any>((props, ref) => {
         period.push(now);
 
         form.setFieldsValue({
-            USE_YN: "Y",
-            PERIOD: period,
+            useYn: "",
+            period: period,
         });
     };
 
@@ -44,7 +44,7 @@ const Search = forwardRef<any, any>((props, ref) => {
             .then((fields) => {
                 let params = {
                     ...fields,
-                    PERIOD: [fields.PERIOD[0].format(dateFormat), fields.PERIOD[1].format(dateFormat)],
+                    period: [fields.period[0].format(dateFormat), fields.period[1].format(dateFormat)],
                 };
 
                 refGrid.current.getCodelist(params);
@@ -69,20 +69,12 @@ const Search = forwardRef<any, any>((props, ref) => {
             >
                 <Row gutter={24}>
                     <Col span={5}>
-                        <Form.Item name="SEARCH_TEXT" label="검색조건">
+                        <Form.Item name="searchText" label="검색조건">
                             <Input />
                         </Form.Item>
                     </Col>
                     <Col span={3}>
-                        <Form.Item
-                            name="USE_YN"
-                            label="사용여부"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
+                        <Form.Item name="useYn" label="사용여부">
                             <Select style={{ width: "80px" }}>
                                 <Option value="">전체</Option>
                                 <Option value="Y">Y</Option>
@@ -91,7 +83,7 @@ const Search = forwardRef<any, any>((props, ref) => {
                         </Form.Item>
                     </Col>
                     <Col span={6}>
-                        <Form.Item name="PERIOD" label="기간">
+                        <Form.Item name="period" label="기간">
                             <RangePicker format={"YYYY-MM-DD"} />
                         </Form.Item>
                     </Col>

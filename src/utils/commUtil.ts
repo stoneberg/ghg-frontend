@@ -1,19 +1,17 @@
 import { IUploadFileResult } from "@/types/upload-file";
 
 export const arrayToTree = (arr, parent, addLeaf = true) => {
-  return arr
-    .filter(
-      (item) =>
-        item.P_CODE_CD === parent &&
-        (addLeaf ? true : arr.find((temp) => temp.P_CODE_CD === item.CODE_CD))
-    )
-    .map((child) => ({
-      ...child,
-      title: child.CODE_NM,
-      value: child.CODE_CD,
-      key: child.CODE_CD,
-      children: arrayToTree(arr, child.CODE_CD, addLeaf),
-    }));
+    return arr
+        .filter((item) => {
+            return item.pcodeCd === parent && (addLeaf ? true : arr.find((temp) => temp.pcodeCd === item.codeCd));
+        })
+        .map((child) => ({
+            ...child,
+            title: child.codeNm,
+            value: child.codeCd,
+            key: child.codeCd,
+            children: arrayToTree(arr, child.codeCd, addLeaf),
+        }));
 };
 
 export const getUploadFileResult = (subFolder: string, fileSeq: number, orgName: string, chgName: string, fileType: string, fileSize: number): IUploadFileResult => {

@@ -17,34 +17,36 @@ import * as XLSX from "xlsx";
 const dateFormat = "YYYY-MM-DD";
 
 const defaultRow = {
-    CODE_CD: "",
-    CODE_NM: "",
-    CODE_LVL: 1,
-    P_CODE_CD: null,
-    DSP_ORDER: null,
-    USE_YN: "Y",
-    EXP_FR_DT: "2001-01-01",
-    EXP_TO_DT: "9999-12-31",
-    ATTR1_JSON: null,
-    ATTR1_VAL: null,
-    ATTR2_JSON: null,
-    ATTR2_VAL: null,
-    ATTR3_JSON: null,
-    ATTR3_VAL: null,
-    ATTR4_JSON: null,
-    ATTR4_VAL: null,
-    ATTR5_JSON: null,
-    ATTR5_VAL: null,
-    ATTR6_JSON: null,
-    ATTR6_VAL: null,
-    ATTR7_JSON: null,
-    ATTR7_VAL: null,
-    ATTR8_JSON: null,
-    ATTR8_VAL: null,
-    ATTR9_JSON: null,
-    ATTR9_VAL: null,
-    ATTR10_JSON: null,
-    ATTR10_VAL: null,
+    crudFlag: "",
+    codeCd: "",
+    codeNm: "",
+    langCd: "",
+    codeLvl: 1,
+    pcodeCd: null,
+    dspOrder: null,
+    useYn: "Y",
+    expFrDt: "2001-01-01",
+    expToDt: "9999-12-31",
+    attr1Json: null,
+    attr1Val: null,
+    attr2Json: null,
+    attr2Val: null,
+    attr3Json: null,
+    attr3Val: null,
+    attr4Json: null,
+    attr4Val: null,
+    attr5Json: null,
+    attr5Val: null,
+    attr6Json: null,
+    attr6Val: null,
+    attr7Json: null,
+    attr7Val: null,
+    attr8Json: null,
+    attr8Val: null,
+    attr9Json: null,
+    attr9Val: null,
+    attr10Json: null,
+    attr10Val: null,
 };
 
 const xlsJsonToRowData = (xlsJson: any, colDef: ColDef<any>[]) => {
@@ -65,7 +67,7 @@ const xlsJsonToRowData = (xlsJson: any, colDef: ColDef<any>[]) => {
             Object.entries(hIndex).forEach(([key, value]) => {
                 dRow[key] = row[parseInt(value.toString())];
             });
-            dRow["CRUD_FLAG"] = "C";
+            dRow["crudFlag"] = "C";
             rowData.push(dRow);
         }
     });
@@ -127,122 +129,123 @@ const Grid = forwardRef<any, any>((props, ref) => {
     const [modalProps, setModalProps] = useState({ open: false });
     const [columnDefs, setColumnDefs] = useState<ColDef<any>[]>([
         {
-            field: "CRUD_FLAG",
+            field: "crudFlag",
             headerName: "CRUD",
             maxWidth: 5,
             cellStyle: crudStyle,
             resizable: false,
         },
-        { field: "P_CODE_CD", headerName: "부모코드", hide: true },
+        { field: "pcodeCd", headerName: "부모코드", hide: true },
         {
-            field: "P_CODE_NM",
+            field: "pcodeNm",
             headerName: "분류",
             minWidth: 120,
             rowDrag: () => !(refSelectedNode?.current == undefined),
         },
-        { field: "CODE_CD", headerName: "코드", minWidth: 120, flex: 1 },
-        { field: "CODE_NM", headerName: "코드명", minWidth: 120, flex: 1 },
-        { field: "CODE_LVL", headerName: "레벨", hide: true },
-        { field: "DSP_ORDER", headerName: "정렬순서", hide: true },
+        { field: "codeCd", headerName: "코드", minWidth: 120, flex: 1 },
+        { field: "codeNm", headerName: "코드명", minWidth: 120, flex: 1 },
+        { field: "langCd", headerName: "다국어코드", hide: true },
+        { field: "codeLvl", headerName: "레벨", hide: true },
+        { field: "dspOrder", headerName: "정렬순서", hide: true },
         {
-            field: "USE_YN",
+            field: "useYn",
             headerName: "사용",
             minWidth: 60,
             maxWidth: 60,
             cellRenderer: "checkboxrenderer",
         },
-        { field: "ATTR1_VAL", headerName: "속성1", minWidth: 80 },
-        { field: "ATTR2_VAL", headerName: "속성2", minWidth: 80 },
-        { field: "ATTR3_VAL", headerName: "속성3", minWidth: 80 },
-        { field: "ATTR4_VAL", headerName: "속성4", minWidth: 80 },
-        { field: "ATTR5_VAL", headerName: "속성5", minWidth: 80 },
-        { field: "ATTR6_VAL", headerName: "속성6", minWidth: 80 },
-        { field: "ATTR7_VAL", headerName: "속성7", minWidth: 80 },
-        { field: "ATTR8_VAL", headerName: "속성8", minWidth: 80 },
-        { field: "ATTR9_VAL", headerName: "속성9", minWidth: 80 },
-        { field: "ATTR10_VAL", headerName: "속성10", minWidth: 80 },
+        { field: "attr1Val", headerName: "속성1", minWidth: 80 },
+        { field: "attr2Val", headerName: "속성2", minWidth: 80 },
+        { field: "attr3Val", headerName: "속성3", minWidth: 80 },
+        { field: "attr4Val", headerName: "속성4", minWidth: 80 },
+        { field: "attr5Val", headerName: "속성5", minWidth: 80 },
+        { field: "attr6Val", headerName: "속성6", minWidth: 80 },
+        { field: "attr7Val", headerName: "속성7", minWidth: 80 },
+        { field: "attr8Val", headerName: "속성8", minWidth: 80 },
+        { field: "attr9Val", headerName: "속성9", minWidth: 80 },
+        { field: "attr10Val", headerName: "속성10", minWidth: 80 },
         {
-            field: "PERIOD",
+            field: "period",
             headerName: "기간",
             minWidth: 270,
             cellRenderer: "datepickerrenderer",
             cellRendererParams: { range: true, format: "YYYY-MM-DD" },
         },
         {
-            field: "EXP_FR_DT",
+            field: "expFrDt",
             headerName: "시작일",
             hide: true,
         },
         {
-            field: "EXP_TO_DT",
+            field: "expToDt",
             headerName: "종료일",
             hide: true,
         },
         {
-            field: "ATTR1_JSON",
+            field: "attr1Json",
             headerName: "속성1 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR2_JSON",
+            field: "attr2Json",
             headerName: "속성2 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR3_JSON",
+            field: "attr3Json",
             headerName: "속성3 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR4_JSON",
+            field: "attr4Json",
             headerName: "속성4 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR5_JSON",
+            field: "attr5Json",
             headerName: "속성5 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR6_JSON",
+            field: "attr6Json",
             headerName: "속성6 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR7_JSON",
+            field: "attr7Json",
             headerName: "속성7 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR8_JSON",
+            field: "attr8Json",
             headerName: "속성8 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR9_JSON",
+            field: "attr9Json",
             headerName: "속성9 명",
             minWidth: 80,
             hide: true,
             valueFormatter: valueDisplayFormatter,
         },
         {
-            field: "ATTR10_JSON",
+            field: "attr10Json",
             headerName: "속성10 명",
             minWidth: 80,
             hide: true,
@@ -272,7 +275,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
             let mProps = {
                 ...defaultModalProps,
                 open: true,
-                title: `${e.data.CODE_NM} > ${e.column.colDef.headerName}`,
+                title: `${e.data.codeNm} > ${e.column.colDef.headerName}`,
             };
             if (e.value !== undefined) {
                 mProps.attrName = JSON.parse(e.value).name;
@@ -299,25 +302,26 @@ const Grid = forwardRef<any, any>((props, ref) => {
         gridRef.current.api.exportDataAsExcel({
             fileName: `공통코드_${dayjs().format("YYYYMMDD HHmmss")}.xlsx`,
             columnKeys: [
-                "P_CODE_CD",
-                "P_CODE_NM",
-                "CODE_CD",
-                "CODE_NM",
-                "CODE_LVL",
-                "DSP_ORDER",
-                "USE_YN",
-                "EXP_FR_DT",
-                "EXP_TO_DT",
-                "ATTR1_VAL",
-                "ATTR2_VAL",
-                "ATTR3_VAL",
-                "ATTR4_VAL",
-                "ATTR5_VAL",
-                "ATTR6_VAL",
-                "ATTR7_VAL",
-                "ATTR8_VAL",
-                "ATTR9_VAL",
-                "ATTR10_VAL",
+                "pcodeCd",
+                "pCodeNm",
+                "codeCd",
+                "codeNm",
+                "langCd",
+                "codeLvl",
+                "dspOrder",
+                "useYn",
+                "expFrDt",
+                "expToDt",
+                "attr1Val",
+                "attr2Val",
+                "attr3Val",
+                "attr4Val",
+                "attr5Val",
+                "attr6Val",
+                "attr7Val",
+                "attr8Val",
+                "attr9Val",
+                "attr10Val",
             ],
         });
     };
@@ -339,13 +343,13 @@ const Grid = forwardRef<any, any>((props, ref) => {
                 : Math.max.apply(
                       null,
                       renderedNodes.map((node) => {
-                          let seq = Number(node.data.CODE_CD.replace(node.data.P_CODE_CD, ""));
+                          let seq = Number(node.data.codeCd.replace(node.data.pcodeCd, ""));
 
                           console.log(
                               "seq:",
                               seq,
-                              node.data.CODE_CD.replace(node.data.P_CODE_CD, ""),
-                              Number(node.data.CODE_CD.replace(node.data.P_CODE_CD, ""))
+                              node.data.codeCd.replace(node.data.pcodeCd, ""),
+                              Number(node.data.codeCd.replace(node.data.pcodeCd, ""))
                           );
                           seq = Number.isNaN(seq) ? 0 : seq;
                           return seq;
@@ -360,19 +364,19 @@ const Grid = forwardRef<any, any>((props, ref) => {
                 add: [
                     {
                         ...defaultRow,
-                        CRUD_FLAG: "C",
-                        CODE_CD: refSelectedNode?.current.CODE_CD + nextSeq.toString().padStart(2, "0"),
-                        P_CODE_CD: refSelectedNode?.current.key,
-                        P_CODE_NM: refSelectedNode?.current.title,
-                        PERIOD: [dayjs().format(dateFormat), "9999-12-31"],
-                        DSP_ORDER: rowCnt + 1,
+                        crudFlag: "C",
+                        codeCd: refSelectedNode?.current.codeCd + nextSeq.toString().padStart(2, "0"),
+                        pcodeCd: refSelectedNode?.current.key,
+                        pcodeNm: refSelectedNode?.current.title,
+                        period: [dayjs().format(dateFormat), "9999-12-31"],
+                        dspOrder: rowCnt + 1,
                     },
                 ],
             },
             (e) =>
                 gridRef.current?.api.startEditingCell({
                     rowIndex: rowCnt,
-                    colKey: "CODE_NM",
+                    colKey: "codeNm",
                 })
         );
     };
@@ -380,14 +384,14 @@ const Grid = forwardRef<any, any>((props, ref) => {
     const handleBtnDelete = (e) => {
         gridRef.current?.api.forEachNode((node) => {
             if (node?.isSelected()) {
-                if (gridRef.current?.api.getValue("CRUD_FLAG", node) != "C") {
+                if (gridRef.current?.api.getValue("crudFlag", node) != "C") {
                     messageApi.open({
                         type: "warn",
                         content: "저장된 행은 삭제 할 수 없습니다.",
                     });
                     return;
                 }
-                node.setDataValue("CRUD_FLAG", "D");
+                node.setDataValue("crudFlag", "D");
             }
         });
     };
@@ -395,17 +399,17 @@ const Grid = forwardRef<any, any>((props, ref) => {
     const handleBtnSave = async (e) => {
         let data: any[] = [];
         gridRef.current.api.forEachNode((node) => {
-            if (["C", "U", "D"].includes(node?.data.CRUD_FLAG)) {
-                node.data.EXP_FR_DT = node.data.PERIOD[0];
-                node.data.EXP_TO_DT = node.data.PERIOD[1];
+            if (["C", "U", "D"].includes(node?.data.crudFlag)) {
+                node.data.expFrDt = node.data.period[0];
+                node.data.expToDt = node.data.period[1];
+                node.data.langCd = node.data.langCd || node.data.codeNm;
                 data.push(node?.data);
             }
         });
 
-        const res = await fetchApi.post("/sample/saveCodeList", { json: data }).json();
+        const result: any = await fetchApi.post("api/ghg/v1/admin/codes/save", { json: { codeList: data } }).json();
 
-        if (res) {
-            // if (res.code != "S0000001") {
+        if (result.code != "OK") {
             messageApi.open({
                 type: "error",
                 content: "저장에 실패하였습니다.",
@@ -418,18 +422,18 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
     const getOptionList = async (code) => {
         let options = [];
-        const res = await fetchApi.post("/sample/codeList", { json: { P_CODE_CD: code } }).json();
-        // if (result.code != "S0000001") {
-        //     return [];
-        // }
+        const result: any = await fetchApi.post("api/ghg/v1/admin/codes", { json: { pcodeCd: code } }).json();
+        if (result.code != "OK") {
+            return [];
+        }
 
-        // options = res.dataSet;
+        options = result.dataSet;
         return options;
     };
 
     const updateColDef = async (node) => {
         let colDefs: ColDef<any>[] = gridRef.current?.api.getColumnDefs() || [];
-        let regExAttrVal = /^ATTR([0-9]{1,2})_VAL$/;
+        let regExAttrVal = /^attr([0-9]{1,2})Val$/;
 
         let pCodeList = [];
 
@@ -437,7 +441,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
         colDefs.forEach((colDef) => {
             const colId = colDef.colId || "";
             if (regExAttrVal.test(colId)) {
-                const colHeaderInfo = node[colId.replace("_VAL", "_JSON")];
+                const colHeaderInfo = node[colId.replace("Val", "Json")];
 
                 if (colHeaderInfo) {
                     const hInfo = JSON.parse(colHeaderInfo);
@@ -453,7 +457,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
             if (regExAttrVal.test(colId)) {
                 colDef.hide = true;
                 colDef.cellRenderer = undefined;
-                const colHeaderInfo = node[colId.replace("_VAL", "_JSON")];
+                const colHeaderInfo = node[colId.replace("Val", "Json")];
 
                 if (colHeaderInfo) {
                     colDef.hide = false;
@@ -470,10 +474,10 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
                             colDef.cellRendererParams = {
                                 options: codeList
-                                    .filter((data) => data.P_CODE_CD == hInfo.code)
+                                    .filter((data) => data.pcodeCd == hInfo.code)
                                     .map((data) => ({
-                                        label: data.CODE_NM,
-                                        value: data.CODE_CD,
+                                        label: data.codeNm,
+                                        value: data.codeCd,
                                     })),
                             };
                             break;
@@ -502,44 +506,42 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
     const getCodelist = (params: any) => {
         if (refSelectedNode.current) {
-            params = { ...params, P_CODE_CD: [refSelectedNode.current.CODE_CD] };
+            params = { ...params, pcodeCd: [refSelectedNode.current.codeCd] };
         }
 
-        console.log("getCodelist;;;;;;;");
-        const res = fetchApi
-            .post("api/admin/v1/code", { json: params })
+        fetchApi
+            .post("api/ghg/v1/admin/codes", { json: params })
             .json()
-            .then((res) => console.log("getCodelist:", res));
+            .then((result: any) => {
+                console.log("getCodelist", result, result.data.length);
+                if (result.code != "OK" || result.data.length < 1) {
+                    messageApi.open({
+                        type: "error",
+                        content: "조회된 정보가 없습니다.",
+                    });
+                    gridRef.current?.api.setRowData([]);
+                    return;
+                }
 
-        // request("post", "/sample/codeList", params).then((result) => {
-        //     if (result.code != "S0000001" || result.dataSet.length < 1) {
-        //         messageApi.open({
-        //             type: "error",
-        //             content: "조회된 정보가 없습니다.",
-        //         });
-        //         gridRef.current?.api.setRowData([]);
-        //         return;
-        //     }
-
-        //     if (result.dataSet.length > 0) {
-        //         let convData = result.dataSet.map(
-        //             (data) => (data = { ...data, PERIOD: [data.EXP_FR_DT, data.EXP_TO_DT] })
-        //         );
-        //         gridRef.current?.api.setRowData(convData);
-        //     }
-        // });
+                if (result.data.length > 0) {
+                    let convData = result.data.map(
+                        (data) => (data = { ...data, crudFlag: "", period: [data.expFrDt, data.expToDt] })
+                    );
+                    gridRef.current?.api.setRowData(convData);
+                }
+            });
     };
 
     const onCellValueChanged = (e) => {
-        if (!["C", "D"].includes(e.node.data.CRUD_FLAG)) {
-            e.node.setDataValue("CRUD_FLAG", "U");
+        if (!["C", "D"].includes(e.node.data.crudFlag)) {
+            e.node.setDataValue("crudFlag", "U");
         }
     };
 
     const handleChkAttrNm = (isChecked: boolean) => {
         let colDefs: ColDef<any>[] = gridRef.current.api.getColumnDefs() || [];
 
-        let regExAttrVal = /^ATTR([0-9]{1,2})_JSON$/;
+        let regExAttrVal = /^attr([0-9]{1,2})Json$/;
 
         colDefs.forEach((colDef) => {
             const colId = colDef.colId || "";
@@ -553,11 +555,11 @@ const Grid = forwardRef<any, any>((props, ref) => {
     const handleRowDragEnd = (e) => {
         gridRef.current?.api.forEachNode((node) => {
             let newOrder = (node.rowIndex || 0) + 1;
-            if (newOrder != node.data.DSP_ORDER) {
-                if (!["C", "D"].includes(node.data.CRUD_FLAG)) {
-                    node.setDataValue("CRUD_FLAG", "U");
+            if (newOrder != node.data.dspOrder) {
+                if (!["C", "D"].includes(node.data.crudFlag)) {
+                    node.setDataValue("crudFlag", "U");
                 }
-                node.setDataValue("DSP_ORDER", node.rowIndex || 0 + 1);
+                node.setDataValue("dspOrder", node.rowIndex || 0 + 1);
             }
         });
     };
@@ -577,7 +579,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
             // 셀 데이터를 파싱하여 출력
             const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
             const rowData = xlsJsonToRowData(jsonData, columnDefs).map(
-                (data) => (data = { ...data, PERIOD: [data.EXP_FR_DT, data.EXP_TO_DT] })
+                (data) => (data = { ...data, period: [data.expFrDt, data.expToDt] })
             );
 
             console.log("handleFileUpload:", rowData);
@@ -628,7 +630,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
                     defaultColDef={defaultColDef} // Default Column Properties
                     animateRows={true} // Optional - set to 'true' to have rows animate when sorted
                     getRowClass={(params) => {
-                        return params.data.CRUD_FLAG == "D" ? "cancled-row" : null;
+                        return params.data.crudFlag == "D" ? "cancled-row" : null;
                     }}
                     rowDragManaged={true}
                     suppressRowClickSelection={true}
