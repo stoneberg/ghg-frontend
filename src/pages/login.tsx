@@ -2,7 +2,7 @@ import { getDefaultLayout, IDefaultLayoutPage } from "@/components/layout/defaul
 import { Button, Checkbox, Form, Input } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { GetStaticPropsContext } from 'next';
-import { signIn } from "next-auth/react";
+import { signIn, SignInResponse } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import "slick-carousel/slick/slick-theme.css";
@@ -22,41 +22,42 @@ export async function getStaticProps({locale}: GetStaticPropsContext) {
   };
 }
 const LoginPage: IDefaultLayoutPage = () => {
-  const router = useRouter();
-  const [form] = useForm<ILoginFormValue>();
+    const router = useRouter();
+    const [form] = useForm<ILoginFormValue>();
 
-const onFinish = (values: ILoginFormValue) => {
-  console.log('Success:', values);
-  signIn("login-credentials", { username: values.username
-             , password: values.password });
-             
-};
-  const handleFinish = useCallback(async () => {
-    console.log("skdsksksksksk", form);
+    const handleFinish = useCallback(async (values: ILoginFormValue) => {
     try {
-      console.log(form);
-
-       await signIn("login-credentials", { username: form.getFieldValue("username")
-             , password: form.getFieldValue("password") });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+            const result = await signIn("login-credentials", { 
+                    username: values.username
+                    , password: values.password
+                    ,redirect: false }) as SignInResponse ;
+            if(result.ok) {
+                console.log("ok");
+                router.push("/");
+            } else {
+               console.log("fail", result);
+               form.resetFields(); 
+            }
+        } catch (error) {
+            console.log("error");
+            console.log(error);
+        }
+    }, []);
 
   return (
     <>
       <div className="master_height">
-<div className="main_con_body">
-    <div className="contents_body">
-         <div className="login_visual_wrap">
-          <div className="login_visual_colorbg"></div>
-          <div className="login_visual_shape">
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1440 120">
-                  <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
-              </svg>
-          </div>
-          <canvas className="particles-js-canvas-el" width="1851" height="380" style={{"width": "100%","height": "100%"}}></canvas>
-      </div>
+        <div className="main_con_body">
+            <div className="contents_body">
+                <div className="login_visual_wrap">
+                <div className="login_visual_colorbg"></div>
+                <div className="login_visual_shape">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1440 120">
+                    <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
+                </svg>
+            </div>
+            <canvas className="particles-js-canvas-el" width="1851" height="380" style={{"width": "100%","height": "100%"}}></canvas>
+        </div>
             <div className="login_wrap">
                 <div className="form_box">
                     <h1>환영합니다!</h1> 
@@ -64,7 +65,7 @@ const onFinish = (values: ILoginFormValue) => {
                     <div>
                         <Form<ILoginFormValue>
                              form={form}
-                            onFinish={onFinish} 
+                            onFinish={handleFinish} 
                             autoComplete="off"
                             initialValues={{ remember: true }}
                           >
@@ -77,7 +78,7 @@ const onFinish = (values: ILoginFormValue) => {
                           <div className="form-group">
                               <label htmlFor="password">패스워드</label> 
                               <Form.Item<ILoginFormValue> id="password" name="password" rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}>
-                                <Input.Password className="form-control" placeholder="패스워드를 입력해 주세요."/>
+                                <Input.Password className="form-control" autoComplete="false" placeholder="패스워드를 입력해 주세요."/>
                               </Form.Item>
                           </div> 
                           <div className="form-group">

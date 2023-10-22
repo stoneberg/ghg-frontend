@@ -1,7 +1,14 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const DefaultHeader = () => {
+    const session = useSession();
+    
+    useEffect(() => {
+        console.log(session);
+    });
+
   return (
     <>
       <header className="gnb_wrap">
