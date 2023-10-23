@@ -265,19 +265,19 @@ const Grid = forwardRef<any, any>((props, ref) => {
         open: false,
         title: "",
         attrName: "",
-        attrType: "text",
+        attrType: "Text",
         attrCode: "",
     };
 
     // Example of consuming Grid Event
     const cellClickedListener = (e) => {
-        if (e.column.colId.includes("JSON")) {
+        if (e.column.colId.includes("Json")) {
             let mProps = {
                 ...defaultModalProps,
                 open: true,
                 title: `${e.data.codeNm} > ${e.column.colDef.headerName}`,
             };
-            if (e.value !== undefined) {
+            if (e.value !== null) {
                 mProps.attrName = JSON.parse(e.value).name;
                 mProps.attrType = JSON.parse(e.value).type;
                 mProps.attrCode = JSON.parse(e.value).code;
@@ -289,11 +289,12 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
     const handleModalResult = (result) => {
         if (result) {
+            // 명칭이 없으면 클리어
+            // result = result.name.length < 1 ? null : result;
             const currentCell = gridRef.current.api.getFocusedCell();
             gridRef.current.api
                 .getDisplayedRowAtIndex(currentCell.rowIndex)
-                .setDataValue(currentCell.column.getColId(), JSON.stringify(result));
-            console.log("getFocusedCell", gridRef.current.api.getFocusedCell());
+                .setDataValue(currentCell.column.getColId(), result.name.length < 1 ? null : JSON.stringify(result));
         }
         setModalProps(defaultModalProps);
     };
@@ -344,13 +345,6 @@ const Grid = forwardRef<any, any>((props, ref) => {
                       null,
                       renderedNodes.map((node) => {
                           let seq = Number(node.data.codeCd.replace(node.data.pcodeCd, ""));
-
-                          console.log(
-                              "seq:",
-                              seq,
-                              node.data.codeCd.replace(node.data.pcodeCd, ""),
-                              Number(node.data.codeCd.replace(node.data.pcodeCd, ""))
-                          );
                           seq = Number.isNaN(seq) ? 0 : seq;
                           return seq;
                       })
@@ -358,12 +352,23 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
         const rowCnt = renderedNodes.length || 0;
 
+        const hInfo: any = {};
+
+        const regExAttrVal = /^attr([0-9]{1,2})Json$/;
+
+        columnDefs.forEach((colDef) => {
+            if (regExAttrVal.test(colDef.field)) {
+                hInfo[colDef.field] = refSelectedNode?.current[colDef.field];
+            }
+        });
+
         gridRef.current?.api.applyTransactionAsync(
             {
                 addIndex: rowCnt,
                 add: [
                     {
                         ...defaultRow,
+                        ...hInfo,
                         crudFlag: "C",
                         codeCd: refSelectedNode?.current.codeCd + nextSeq.toString().padStart(2, "0"),
                         pcodeCd: refSelectedNode?.current.key,
@@ -427,7 +432,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
             return [];
         }
 
-        options = result.dataSet;
+        options = result.data;
         return options;
     };
 
@@ -445,7 +450,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
 
                 if (colHeaderInfo) {
                     const hInfo = JSON.parse(colHeaderInfo);
-                    pCodeList.push(hInfo.code);
+                    hInfo.code && pCodeList.push(hInfo.code);
                 }
             }
         });
@@ -469,10 +474,22 @@ const Grid = forwardRef<any, any>((props, ref) => {
                             colDef.cellRenderer = "checkboxrenderer";
                             break;
                         case "Select":
-                            console.log("select?");
                             colDef.cellRenderer = "selectboxrenderer";
 
                             colDef.cellRendererParams = {
+                                options: codeList
+                                    .filter((data) => data.pcodeCd == hInfo.code)
+                                    .map((data) => ({
+                                        label: data.codeNm,
+                                        value: data.codeCd,
+                                    })),
+                            };
+                            break;
+                        case "MultiSelect":
+                            colDef.cellRenderer = "selectboxrenderer";
+
+                            colDef.cellRendererParams = {
+                                mode: "multiple",
                                 options: codeList
                                     .filter((data) => data.pcodeCd == hInfo.code)
                                     .map((data) => ({
@@ -488,8 +505,7 @@ const Grid = forwardRef<any, any>((props, ref) => {
                             colDef.width = 300;
                             colDef.cellRenderer = "datepickerrenderer";
                             colDef.cellRendererParams = {
-                                range: true,
-                                format: "YYYY-MM-DD",
+                                mode: "multiple",
                             };
                             break;
                         case "Image":
@@ -513,7 +529,6 @@ const Grid = forwardRef<any, any>((props, ref) => {
             .post("api/ghg/v1/admin/codes", { json: params })
             .json()
             .then((result: any) => {
-                console.log("getCodelist", result, result.data.length);
                 if (result.code != "OK" || result.data.length < 1) {
                     messageApi.open({
                         type: "error",
@@ -581,8 +596,6 @@ const Grid = forwardRef<any, any>((props, ref) => {
             const rowData = xlsJsonToRowData(jsonData, columnDefs).map(
                 (data) => (data = { ...data, period: [data.expFrDt, data.expToDt] })
             );
-
-            console.log("handleFileUpload:", rowData);
 
             gridRef.current?.api.applyTransaction({
                 add: rowData,

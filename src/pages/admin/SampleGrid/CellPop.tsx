@@ -1,8 +1,9 @@
 import { Form, Input, Modal, Select, TreeSelect } from "antd";
 import { forwardRef, useEffect, useState } from "react";
+import { fetchApi } from "src/client/base";
+import { arrayToTree } from "src/utils/commUtil";
 
 const CellPop = forwardRef<any, any>((props) => {
-    console.log("CellPop", props);
     const { open, title, attrName, attrType, attrCode } = props.modalProps;
     const handleModalResult = props.handleModalResult;
     const [form] = Form.useForm();
@@ -10,7 +11,7 @@ const CellPop = forwardRef<any, any>((props) => {
     const [inpuValue, setInputValue] = useState("");
     const [treeData, setTreeData] = useState([]);
     const [selectedCode, setSelectedCode] = useState("");
-    const [treeSelectEnable, setTreeSelectEnable] = useState(false);
+    const [treeSelectDisable, setTreeSelectDisable] = useState(false);
 
     const initFormValues = () => {
         form.setFieldsValue({
@@ -18,8 +19,7 @@ const CellPop = forwardRef<any, any>((props) => {
             type: attrType,
             code: attrCode,
         });
-
-        form.getFieldValue("type") !== "Select" ? setTreeSelectEnable(true) : setTreeSelectEnable(false);
+        setTreeSelectDisable(!["Select", "MultiSelect"].includes(form.getFieldValue("type")));
     };
 
     useEffect(() => {
@@ -31,21 +31,24 @@ const CellPop = forwardRef<any, any>((props) => {
     }, [props]);
 
     const renderTreeData = () => {
-        // request("get", "/sample/treeList", null).then((result) => {
-        //   console.log("/sample/treeList", result);
-        //   if (result.code != "S0000001" || result.dataSet.length < 1) {
-        //     return;
-        //   }
-        //   setTreeData(arrayToTree(result.dataSet, "root", false));
-        // });
+        fetchApi
+            .get("api/ghg/v1/admin/codes/trees")
+            .json()
+            .then((result: any) => {
+                if (result.code != "OK" || result.data.length < 1) {
+                    return;
+                }
+                let treeData = arrayToTree(result.data, null);
+                setTreeData(treeData);
+            });
     };
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setInputValue(e.target.value);
     };
 
-    const onSelectChange = (value) => {
-        value === "Select" ? setTreeSelectEnable(false) : setTreeSelectEnable(true);
+    const handelTyleSelected = (value) => {
+        setTreeSelectDisable(!["Select", "MultiSelect"].includes(value));
     };
 
     const onSelect = (value, node) => {
@@ -56,8 +59,11 @@ const CellPop = forwardRef<any, any>((props) => {
         let result = {
             name: form.getFieldValue("name"),
             type: form.getFieldValue("type"),
-            code: selectedCode,
         };
+        if (["Select", "MultiSelect"].includes(form.getFieldValue("type"))) {
+            result["code"] = form.getFieldValue("code");
+        }
+
         handleModalResult(result);
     };
 
@@ -75,31 +81,23 @@ const CellPop = forwardRef<any, any>((props) => {
             // centered
         >
             <Form form={form} layout="vertical">
-                <Form.Item
-                    label="명칭"
-                    name="name"
-                    // rules={[
-                    //   {
-                    //     required: true,
-                    //     message: "Please input the title of collection!",
-                    //   },
-                    // ]}
-                >
+                <Form.Item label="명칭" name="name">
                     <Input onChange={onInputChange} />
                 </Form.Item>
                 <Form.Item name="type" label="유형">
-                    <Select onChange={onSelectChange}>
-                        <Option value="Text">텍스트</Option>
-                        <Option value="Select">콤보박스</Option>
-                        <Option value="Date">달력</Option>
-                        <Option value="Period">기간</Option>
-                        <Option value="Checkbox">체크박스</Option>
-                        <Option value="Image">사진</Option>
+                    <Select onSelect={handelTyleSelected}>
+                        <Option value="Text">Text</Option>
+                        <Option value="Select">Select</Option>
+                        <Option value="MultiSelect">MultiSelect</Option>
+                        <Option value="Date">Date</Option>
+                        <Option value="Period">Period</Option>
+                        <Option value="Checkbox">CheckBox</Option>
+                        <Option value="Image">Image</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item name="code" label="공통코드">
                     <TreeSelect
-                        disabled={treeSelectEnable}
+                        disabled={treeSelectDisable}
                         showSearch
                         style={{ width: "100%" }}
                         onSelect={onSelect}
