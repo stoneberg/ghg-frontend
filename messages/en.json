@@ -36,5 +36,8 @@
       ,"CMM_T_0025": { "value" : "Search" }
       ,"MTD_T_0006": { "value" : "Overview" }
       ,"CMM_M_0012": { "value" : "Please enter keyword." }
+      ,"CMM_T_0067": { "value" : "Account Info" }
+      ,"CMM_T_0068": { "value" : "Logout" }
+      ,"CMM_T_0069": { "value" : "My Page" }
   }
 }

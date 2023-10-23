@@ -1,7 +1,42 @@
 import { fetchResourceApi } from "@/client/base";
+import { AccountRole, COMMON_YN } from "@/enums/common";
 import { IServerResponse } from "@/types/server-response";
-import NextAuth, { Session, User } from "next-auth";
+import NextAuth, { ILoginUser, Session, User } from "next-auth";
 import CredentialsProvider, { CredentialsConfig } from "next-auth/providers/credentials";
+
+
+const getDummyData = ():ILoginUser => {
+  return  {
+            userId: "test",
+            userName: "테스트", 
+            userDisplayName: "테스트",
+            userDisplayNameEng: "TEST",
+            userEmail: "cs@centero.kr", 
+            userTelephone: '0103333333',
+            roleId: AccountRole.SystemAdminRole,
+            roleName: '',
+            /// 로그인 사용자의 타입
+            accountType: "",
+            // 로그인 사용자의 국가 ID
+            countryId: '123',
+            /// 로그인 사용자의 국가 명 (KOR)
+            countryKorName: 'ko',
+            /// 로그인 사용자의 국가 명(ENG)
+            countryEngName: 'eng',
+            ///로그인 사용자의 설정 타입존
+            timeZone: '+09:00',
+            /// 로그인 사용자의 계정 활성화 여부
+            activateYn: COMMON_YN.Y, 
+            /// 로그인 사용자의 계정 결재 여부 
+            invoiceYn: COMMON_YN.Y, 
+            /// 로그인 사용자 계정 삭제 여부 
+            deleteYn: COMMON_YN.Y, 
+            /// 사용자 로그인 Main 아이디 입니다.
+            mainAccountId: 'test', 
+            // 계정 관리 권한입니다.(Y/N)
+            accountManagementYn: COMMON_YN.Y 
+          };
+}
 
 const credentialsProviderOption: CredentialsConfig<{}> = {
   type: "credentials",
@@ -21,8 +56,13 @@ const credentialsProviderOption: CredentialsConfig<{}> = {
         if(serverResponse.status && serverResponse.code == "200")
             return serverResponse.data;
 
-        throw new Error(serverResponse.message);
+        return {
+          "id": "leeminuk",
+        }
+
+        //throw new Error(serverResponse.message);
       } catch (e: Error | unknown) {
+        console.log("catch!!!", e);
         if (e instanceof Error)
             throw new Error(e.message);
         if (e instanceof String) 
@@ -34,7 +74,8 @@ const credentialsProviderOption: CredentialsConfig<{}> = {
 export default NextAuth({
     pages:{
         error:"/login",
-        signIn:"/login"
+        signIn:"/login",
+        signOut:"/login"
     },
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
@@ -44,7 +85,8 @@ export default NextAuth({
         async signIn({ user , account, profile, email, credentials }) {
             console.log("signIn ");
             console.log(user);
-            return false;
+            console.log(user);
+            return true;
         },
         jwt({ token, user }) {
             console.log("jwt ");
@@ -56,12 +98,21 @@ export default NextAuth({
             return token;
         },
         async redirect({ url, baseUrl }) {
-            console.log("", url, baseUrl)
-            return process.env.DEFAULT_URL;
+            console.log("redirect", url, baseUrl)
+             // Allows relative callback URLs
+            if (url.startsWith("/")) return `${baseUrl}${url}`
+            // Allows callback URLs on the same origin
+            else if (new URL(url).origin === baseUrl) return url
+            return baseUrl
         },
         session({ session, token }) {
-            console.log("session ");
-            session.user = { ...session.user, id: token.id as string, login: token.login as string };
+            console.log("session 1");
+      
+            session.user = { ...session.user
+              , id: token.id as string
+              , login: token.login as string 
+              , ...getDummyData()
+            };
             console.log(session);
             return session;
         },
