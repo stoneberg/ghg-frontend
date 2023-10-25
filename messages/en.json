@@ -31,6 +31,8 @@
       ,"CMM_T_0038": { "value" :"Registration" }
       ,"CMM_T_0002": { "value" : "Title" }
       ,"CMM_T_0024": { "value" : "List" }
+      ,"CMM_T_0027": { "value" : "Reply" }
+      ,"CMM_T_0029": { "value" : "Modify" }
       ,"CMM_T_0003": { "value" : "Writer" }
       ,"CMM_T_0049": { "value" : "Attachment Files" }
       ,"CMM_T_0025": { "value" : "Search" }
@@ -39,5 +41,8 @@
       ,"CMM_T_0067": { "value" : "Account Info" }
       ,"CMM_T_0068": { "value" : "Logout" }
       ,"CMM_T_0069": { "value" : "My Page" }
+      ,"CMM_M_0044": { "value" : "There are no registered comments." }
+      ,"CMM_T_1000": { "value" : "More" }
+
   }
 }

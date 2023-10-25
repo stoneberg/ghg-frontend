@@ -12,5 +12,7 @@
   "nuxt.isNuxtApp": false,
   "i18n-ally.localesPaths": [
     "messages"
-  ]
+  ],
+  "prettier.tabWidth": 4,
+  "prettier.useTabs": true
 }
