@@ -1,6 +1,6 @@
+import BoardDetail from "@/components/shared/ui/board/board-detail";
 import { NextIntlClientProvider } from "next-intl";
-import messages from '../../../../../messages/ko.json';
-import BoardDetail from "./board-detail";
+import messages from '../../../messages/ko.json';
 
 const onBack = () => {
   console.log("onBack");
@@ -13,15 +13,15 @@ const onUpdate = () => {
 }
 
 
-const getDefaultTableForm = ({data}) => {
-  return  (<NextIntlClientProvider locale="ko" messages={messages}>
-      <BoardDetail data={data}
-        onBack={onBack}
-        onDelete={onDelete} 
-        onUpdate={onUpdate}
-  
-      />
-    </NextIntlClientProvider>);
+const getDefaultTableForm = ({ data }) => {
+  return (<NextIntlClientProvider locale="ko" messages={messages}>
+    <BoardDetail data={data}
+      onBack={onBack}
+      onDelete={onDelete}
+      onUpdate={onUpdate}
+
+    />
+  </NextIntlClientProvider>);
 }
 
 export default {

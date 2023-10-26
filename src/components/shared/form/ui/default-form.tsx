@@ -1,16 +1,22 @@
 import { Form, FormProps } from "antd";
-import React, { PropsWithChildren, useCallback } from "react";
+import React, { PropsWithChildren, useCallback, useEffect, useRef } from "react";
 import style from "./form.module.css";
 
-interface IDefaultFormProps extends FormProps {}
+interface IDefaultFormProps extends FormProps { }
 
 const DefaultForm = <T,>({ children, ...formProps }: PropsWithChildren<IDefaultFormProps>) => {
+  const formRef = useRef();
+
   const handleFormFailed = useCallback(
     ({ errorFields }: any) => {
       formProps.form?.scrollToField(errorFields[0].name);
     },
     [formProps.form]
   );
+
+  useEffect(() => {
+
+  })
 
   return (
     <Form<T>

@@ -5,7 +5,7 @@ import TextArea from "antd/lib/input/TextArea";
 import { getCommentList } from 'dummy/comment';
 import { useTranslations } from 'next-intl';
 import { useRouter } from "next/router";
-import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CommentReplyForm from './comment-reply-form';
 
 interface ICommentProps {
@@ -15,7 +15,7 @@ interface ICommentProps {
   commentOption?: Partial<IComment>
 }
 
-const Comment = ({ ...props }: PropsWithChildren<ICommentProps>) => {
+const Comment = ({ ...props }: ICommentProps) => {
   const { boardDetail, sessionStatus = 'unauthenticated', comments, commentOption } = props;
   const t = useTranslations('Common');
   const [form] = Form.useForm();

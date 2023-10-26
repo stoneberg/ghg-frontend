@@ -44,15 +44,19 @@ export interface IUploadFileResult {
     // 파일을 다운로드 하기 위한 action URL 값입니다.
     url: string;
     /// 파일이 화면에 표시될 이름 값입니다.
-    name: string; 
+    name: string;
     /// 업로드 된 파일의 확장자입니다.
     type: string;
     /// 업로드 된 파일의 크기입니다.
-    size: number; 
+    size: number | string;
     /// 업로드 된 파일을 삭제하기 위한 action url 값입니다.
-    deleteUrl: string; 
+    deleteUrl: string;
     /// 삭제 타입입니다.
     deleteType?: string;
+
+    isChecked?: boolean;
+
+    uid?: string;
 }
 
 

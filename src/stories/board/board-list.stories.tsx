@@ -1,4 +1,7 @@
 import { IBoard } from "@/client/board";
+import { BoardList, TitleCellRenderer } from "@/components/shared/ui/board/board-list";
+import BoardPaginator from "@/components/shared/ui/board/board-paginator";
+import BoardTitle from "@/components/shared/ui/board/board-title";
 import { COMMON_YN } from "@/enums/common";
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
@@ -6,10 +9,7 @@ import timezone from 'dayjs/plugin/timezone'; // dependent on utc plugin
 import utc from 'dayjs/plugin/utc';
 import { NextIntlClientProvider } from "next-intl";
 import { useMemo, useState } from "react";
-import messages from '../../../../../messages/ko.json';
-import { BoardList, TitleCellRenderer } from "./board-list";
-import BoardPaginator from "./board-paginator";
-import BoardTitle from "./board-title";
+import messages from '../../../messages/ko.json';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);

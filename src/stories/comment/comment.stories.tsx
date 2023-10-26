@@ -1,4 +1,5 @@
 import { IBoard } from "@/client/board";
+import Comment from "@/components/shared/ui/comment/comment";
 import { COMMON_YN } from "@/enums/common";
 import type { Meta, StoryObj } from '@storybook/react';
 import dayjs from "dayjs";
@@ -6,9 +7,8 @@ import timezone from 'dayjs/plugin/timezone'; // dependent on utc plugin
 import utc from 'dayjs/plugin/utc';
 import { getCommentList } from "dummy/comment";
 import { NextIntlClientProvider } from "next-intl";
-import enmessages from '../../../../../messages/en.json';
-import messages from '../../../../../messages/ko.json';
-import Comment from "./comment";
+import enmessages from '../../../messages/en.json';
+import messages from '../../../messages/ko.json';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -43,6 +43,10 @@ const meta: Meta<typeof Comment> = {
   component: getDefaultTableForm,
   title: 'Comment/Overview',
   tags: ['autodocs'],
+  parameters: {
+    // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
+    layout: 'fullscreen',
+  },
 };
 type Story = StoryObj<typeof Comment>;
 
